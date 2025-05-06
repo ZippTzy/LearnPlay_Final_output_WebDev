@@ -1,4 +1,3 @@
-// Utility function to shuffle an array
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -7,7 +6,6 @@ function shuffle(array) {
   return array;
 }
 
-// Function to generate a randomized math question with correct and wrong options
 function generateMathQuestion(type) {
   let a, b, question, correctAnswer;
 
@@ -20,7 +18,7 @@ function generateMathQuestion(type) {
       break;
     case "Subtraction":
       a = Math.floor(Math.random() * 21);
-      b = Math.floor(Math.random() * a); // ensure no negative results
+      b = Math.floor(Math.random() * a);
       question = `What is ${a} - ${b}?`;
       correctAnswer = a - b;
       break;
@@ -53,7 +51,6 @@ function generateMathQuestion(type) {
   };
 }
 
-// Function to generate questions for each math subcategory
 function generateMathQuestions() {
   const subcategories = [
     "Addition",
@@ -70,7 +67,6 @@ function generateMathQuestions() {
   return questions;
 }
 
-// Static questions for Science and Vocabulary
 const scienceQuestions = {
   Experiments: [
     {
@@ -518,7 +514,6 @@ const vocabularyQuestions = {
   ],
 };
 
-// Exporting for use
 window.quizData = {
   Math: generateMathQuestions(),
   Science: scienceQuestions,

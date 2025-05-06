@@ -1,5 +1,3 @@
-// This handles the quiz logic and interacts with mcq.js --helppppp why it wont start--
-
 const quizData = window.quizData;
 
 let currentCategory = "";
@@ -8,8 +6,9 @@ let currentQuestionIndex = 0;
 let tries = 3;
 let streak = 0;
 let consecutiveCorrect = 0;
-const maxLives = 3;
 
+const maxLives = 3;
+const questionNumberEl = document.getElementById("questionNumber");
 const questionEl = document.getElementById("questionBox");
 const choicesEl = document.getElementById("choicesContainer");
 const streakCountEl = document.getElementById("streakBar");
@@ -17,95 +16,130 @@ const scoreEl = document.getElementById("score");
 const startButton = document.getElementById("startButton");
 const subcategoryList = document.getElementById("subcategory-list");
 const quizArea = document.getElementById("quiz-area");
+const categoryCards = document.querySelectorAll(".category-card");
+const livesCountEl = document.getElementById("livesCount");
 
-const livesCountEl = document.createElement("div");
-livesCountEl.textContent = `Lives: ${tries}`;
-livesCountEl.classList.add("score");
-document.querySelector(".header").appendChild(livesCountEl);
-
-
-
-// --- Category Selection ---
-document.querySelectorAll(".category-btn").forEach((button) => {
+categoryCards.forEach((button) => {
   button.addEventListener("click", () => {
-    document.querySelectorAll(".category-btn").forEach((b) => b.classList.remove("selected"));
+    categoryCards.forEach((b) => b.classList.remove("selected"));
     button.classList.add("selected");
-
     currentCategory = button.getAttribute("data-category");
     loadSubcategories();
     subcategoryList.classList.remove("hidden");
-    startButton.classList.add("hidden");
+    startButton.classList.remove("hidden");
   });
 });
 
-// --- Load Subcategories as buttons ---
 function loadSubcategories() {
   const subcategories = {
-    Math: ["Addition", "Subtraction", "Multiplication", "Division"],
-    Science: ["Astronomy", "Experiments", "Biology", "Geography"],
-    Vocabulary: ["Reading", "Writing", "Letters", "Numbers"],
+    Math: [
+      { name: "Addition", image: "../../assets/add.png" },
+      { name: "Subtraction", image: "../../assets/add.png" },
+      { name: "Multiplication", image: "../../assets/add.png" },
+      { name: "Division", image: "../../assets/add.png" },
+    ],
+    Science: [
+      { name: "Astronomy", image: "../../assets/astronomy.png" },
+      { name: "Experiments", image: "../../assets/experiements.png" },
+      { name: "Biology", image: "../../assets/biology.png" },
+      { name: "Geography", image: "../../assets/geography.png" },
+    ],
+    Vocabulary: [
+      { name: "Reading", image: "../../assets/reading.png" },
+      { name: "Writing", image: "../../assets/writing.png" },
+      { name: "Letters", image: "../../assets/letters.png" },
+      { name: "Numbers", image: "../../assets/numbers.png" },
+    ],
   };
 
   currentSubcategory = "";
   subcategoryList.innerHTML = "";
 
   subcategories[currentCategory].forEach((sub) => {
-    const btn = document.createElement("div");
-    btn.classList.add("subcategory-btn");
-    btn.textContent = sub;
-    btn.onclick = () => {
-      document.querySelectorAll(".subcategory-btn").forEach((b) => b.classList.remove("selected"));
-      btn.classList.add("selected");
-      currentSubcategory = sub;
+    const card = document.createElement("div");
+    card.className = "category-card subcategory-btn";
+    card.style.backgroundImage = `url('${sub.image}')`;
+    card.style.backgroundColor = "#ddd";
+    card.dataset.subcategory = sub.name;
+
+    const label = document.createElement("div");
+    label.className = "category-label";
+    label.textContent = sub.name;
+    card.appendChild(label);
+
+    card.onclick = () => {
+      document
+        .querySelectorAll(".subcategory-btn")
+        .forEach((b) => b.classList.remove("selected"));
+      card.classList.add("selected");
+      currentSubcategory = sub.name;
       startButton.classList.remove("hidden");
     };
-    subcategoryList.appendChild(btn);
+
+    subcategoryList.appendChild(card);
   });
 }
 
-// --- Start Quiz ---
 startButton.addEventListener("click", startQuiz);
 
 function startQuiz() {
-  if (currentCategory && currentSubcategory) {
+  if (currentCategory && currentSubcategory && window.quizData) {
     document.getElementById("category-selection").classList.add("hidden");
     quizArea.classList.remove("hidden");
 
     currentQuestionIndex = 0;
-    tries = 3;
+    tries = maxLives;
     streak = 0;
     consecutiveCorrect = 0;
 
     updateUI();
     generateQuestion();
+  } else if (!window.quizData) {
+    alert("Quiz data is still loading. Please wait.");
   } else {
     alert("Please select both Category and Sub-category.");
   }
 }
 
-// --- Generate Question ---
 function generateQuestion() {
-  if (!currentCategory || !currentSubcategory) return;
+  const questions = quizData[currentCategory][currentSubcategory];
 
-  const questionData = quizData[currentCategory][currentSubcategory][currentQuestionIndex];
+  if (!questions || questions.length === 0) {
+    questionEl.textContent = "No questions available.";
+    return;
+  }
+
+  const questionData = questions[Math.floor(Math.random() * questions.length)];
 
   questionEl.textContent = questionData.question;
-  const answers = new Set(questionData.options);
+
+  const shuffledOptions = [...questionData.options];
+  for (let i = shuffledOptions.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffledOptions[i], shuffledOptions[j]] = [
+      shuffledOptions[j],
+      shuffledOptions[i],
+    ];
+  }
+
   const correctAnswer = questionData.correctAnswer;
 
   choicesEl.innerHTML = "";
-  answers.forEach((answer) => {
+  shuffledOptions.forEach((answer) => {
     const btn = document.createElement("button");
     btn.classList.add("choice-btn");
     btn.textContent = answer;
+    btn.dataset.correct = answer === correctAnswer;
     btn.onclick = () => handleAnswer(answer === correctAnswer, btn);
     choicesEl.appendChild(btn);
   });
+
+  updateUI();
 }
 
-// --- Handle Answer Logic ---
 function handleAnswer(isCorrect, btn) {
-  btn.disabled = true;
+  const allButtons = choicesEl.querySelectorAll(".choice-btn");
+  allButtons.forEach((b) => (b.disabled = true));
 
   if (isCorrect) {
     btn.classList.add("correct");
@@ -122,74 +156,66 @@ function handleAnswer(isCorrect, btn) {
     tries--;
     consecutiveCorrect = 0;
 
-    if (tries <= 0) {
-      alert("Game Over! You ran out of lives.");
-      resetGame();
-      return;
+    const correctAnswerButton = choicesEl.querySelector(
+      `.choice-btn:not(.disabled)[data-correct="true"]`
+    );
+    setTimeout(() => {
+      if (correctAnswerButton) {
+        correctAnswerButton.classList.add("correct-revealed");
+      }
+    }, 1200);
+
+    if (correctAnswerButton) {
+      correctAnswerButton.classList.add("correct-revealed");
     }
   }
+  
+  if (tries <= 0) { 
+    alert("Game Over! You ran out of lives.");
+    resetGame();
+    return;
+}
 
   updateUI();
 
-  setTimeout(() => {
+  setTimeout(() => { 
     currentQuestionIndex++;
     if (currentQuestionIndex < quizData[currentCategory][currentSubcategory].length) {
-      generateQuestion();
-    } else {
-      alert("Quiz Completed!");
-      resetGame();
+        generateQuestion();
     }
-
-    const incorrectChoices = choicesEl.querySelectorAll(".incorrect");
-    incorrectChoices.forEach((choice) => {
-      choice.classList.add("hidden");
-    });
-  }, 1500);
+}, 1200);
 }
 
-// --- Update UI ---
 function updateUI() {
-  streakCountEl.style.width = `${(streak / 10) * 100}%`;
+  streakCountEl.style.width = `${Math.min(streak, 10) * 10}%`;
   scoreEl.textContent = `Score: ${streak}`;
   livesCountEl.textContent = `Lives: ${tries}`;
+  questionNumberEl.textContent = `Question ${currentQuestionIndex + 1}`;
 }
 
-// --- Reset Game ---
 function resetGame() {
-    currentCategory = "";
-    currentSubcategory = "";
-    currentQuestionIndex = 0;
-    streak = 0;
-    tries = 3;
-    consecutiveCorrect = 0;
-  
-    quizArea.classList.add("hidden");
-    document.getElementById("category-selection").classList.remove("hidden");
-    document.getElementById("game-over").classList.add("hidden");
-  
-    document.querySelectorAll(".category-btn").forEach(b => b.classList.remove("selected"));
-    document.querySelectorAll(".subcategory-btn").forEach(b => b.classList.remove("selected"));
-  
-    startButton.classList.add("hidden");
-    subcategoryList.classList.add("hidden");
-    choicesEl.innerHTML = "";
-    questionEl.textContent = "Question text goes here";
-    questionNumberEl.textContent = "Question 1";
-  
-    updateUI();
+  currentCategory = "";
+  currentSubcategory = "";
+  currentQuestionIndex = 0;
+  streak = 0;
+  tries = maxLives;
+  consecutiveCorrect = 0;
+
+  quizArea.classList.add("hidden");
+  document.getElementById("category-selection").classList.remove("hidden");
+
+  document
+    .querySelectorAll(".category-card")
+    .forEach((b) => b.classList.remove("selected"));
+  document
+    .querySelectorAll(".subcategory-btn")
+    .forEach((b) => b.classList.remove("selected"));
+
+  startButton.classList.add("hidden");
+  subcategoryList.classList.add("hidden");
+  choicesEl.innerHTML = "";
+  questionEl.textContent = "Question text goes here";
+  questionNumberEl.textContent = "Question 1";
+
+  updateUI();
 }
-
-const exitButton = document.createElement("button");
-exitButton.textContent = "Exit";
-exitButton.classList.add("score"); 
-exitButton.style.background = "#ef4444";
-exitButton.style.color = "white";
-exitButton.style.cursor = "pointer";
-exitButton.style.marginLeft = "auto";
-exitButton.onclick = () => {
-  if (confirm("Are you sure you want to exit the quiz?")) {
-    resetGame();
-  }
-};
-document.querySelector(".header").appendChild(exitButton);
-
