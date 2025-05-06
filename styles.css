@@ -13,10 +13,6 @@ body, html {
     align-items: center;
     position: relative;
   }
-  .cloud{
-    justify-self: ;
-  }
-  
   .login-card {
     background: rgba(255, 255, 255, 0.15);
     border-radius: 20px;
@@ -32,7 +28,6 @@ body, html {
     width: 250px;
     height: 250px;
     border-radius: 50%;
-    background: white;
     margin-bottom: 10px;
   }
   
@@ -72,11 +67,10 @@ body, html {
     color: #ffffff;
     text-decoration: underline;
   }
-  
-  .social-login img {
-    width: 24px;
-    margin: 10px 5px;
-    cursor: pointer;
+  .social-login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   
   .create-account {
@@ -89,6 +83,9 @@ body, html {
     color: white;
     text-decoration: underline;
   }
-  .clouds{
-    max-inline-size: 100%;
+  .fb{
+    margin-left: 10px;
   }
+  
+
+  
