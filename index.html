@@ -1,28 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Log In</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <body>
-        <div class="background">
-            <div class="login-card">
-            <img src="assets/413298313_ab36d712-1ca3-43a8-a526-9ea57196a494 1.png" alt="Mascot" class="mascot" />
-            <h1>LearnPlay</h1>
-            <input type="text" placeholder="Username" class="input"/>
-            <input type="password" placeholder="Password" class="input"/>
-            <button class="sign-in">Sign In</button>
-            <a href="#" class="forgot">Forgot Password</a>
-            <div class="social-login">
-              <img src="assets/image 7.png" alt="Google"/>
-              <img src="assets/image 8.png" alt="Facebook" class="fb"/>
-            </div>
-            <p class="create-account">New? <a href="#">Create Account</a></p>
-          </div>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Landing Page -->
+    <div class="wrapper" id="landingpage">
+      <div class="login-card">
+        <img src="assets/mascot.png" alt="Mascot" class="mascot" />
+        <h1>Welcome to LearnPlay</h1>
+        <button id="goLogin" class="home-btn">Log In</button>
+        <button id="goRegister" class="home-btn">Sign Up</button>
+      </div>
+    </div>
+
+    <!-- Login Page -->
+    <div class="wrapper" id="loginWrapper" style="display: none;">
+      <div class="login-card">
+        <img src="assets/mascot.png" alt="Mascot" class="mascot" />
+        <h1>LearnPlay</h1>
+        <input type="text" placeholder="Username" class="input" />
+        <input type="password" placeholder="Password" class="input" />
+        <label><input type="checkbox" id="remember-me"> Remember Me</label>
+        <button class="sign-btn">Sign In</button>
+        <a href="#" class="forgot">Forgot Password?</a>
+        <div class="social-login">
+          <img src="assets/image7.png" alt="Google" />
+          <img src="assets/image8.png" alt="Facebook" class="fb" />
         </div>
-      </body>
-</body>
+        <div class="create-account">
+          <p>Don't have an account? <a href="#" id="showRegisterLink">Create Account</a></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Register Page -->
+    <div class="wrapper" id="registerWrapper" style="display: none;">
+      <div class="login-card">
+        <img src="assets/mascot.png" alt="Mascot" class="mascot" />
+        <h1>Sign Up</h1>
+        <input type="text" placeholder="Username" class="input" />
+        <input type="email" placeholder="Gmail" class="input" />
+        <input type="password" placeholder="Password" class="input" />
+        <button class="sign-btn">Sign Up</button>
+        <a href="#" class="forgot">Forgot Password?</a>
+        <div class="social-login">
+          <img src="assets/image7.png" alt="Google" />
+          <img src="assets/image8.png" alt="Facebook" class="fb" />
+        </div>
+        <p class="create-account">Already have an account? <a href="#" id="showLoginLink">Sign In</a></p>
+      </div>
+    </div>
+
+    <!-- Place script at end -->
+    <script src="user/lindex.js"></script>
+  </body>
 </html>
