@@ -1,20 +1,94 @@
-*{
-    margin: 0;
-    padding: 0;   
-}
-body{
+body, html {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    background-image: url("assets/background.jpg");
-}    
-.background{
-    width: 100%;
     height: 100%;
-}
-.container{
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .background {
+    background: linear-gradient(to right, #ff3cac, #784ba0);
+    height: 100%;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-}
+    position: relative;
+  }
+  .cloud{
+    justify-self: ;
+  }
+  
+  .login-card {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+    width: 300px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(8px);
+    position: relative;
+  }
+  
+  .mascot {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: white;
+    margin-bottom: 10px;
+  }
+  
+  h1 {
+    color: #1a1a1a;
+    margin: 10px 0 20px;
+    font-size: 24px;
+  }
+  
+  .input {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    background: #e0e0e0;
+  }
+  
+  .sign-in {
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(to right, #ff9966, #9933ff);
+    border: none;
+    border-radius: 20px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .forgot {
+    display: block;
+    margin: 10px 0;
+    font-size: 12px;
+    color: #ffffff;
+    text-decoration: underline;
+  }
+  
+  .social-login img {
+    width: 24px;
+    margin: 10px 5px;
+    cursor: pointer;
+  }
+  
+  .create-account {
+    margin-top: 10px;
+    font-size: 12px;
+    color: white;
+  }
+  
+  .create-account a {
+    color: white;
+    text-decoration: underline;
+  }
+  .clouds{
+    max-inline-size: 100%;
+  }
