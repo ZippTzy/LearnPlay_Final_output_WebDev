@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Styled Quiz Game</title>
+    <link rel="stylesheet" href="gcss.css" />
+  </head>
+  <body>
+    <div class="quiz-container">
+      <div id="category-selection">
+        <h1 class="title">Pick a Category</h1>
+        <p class="subtitle">Choose your topic and get ready!</p>
+
+        <div class="categories">
+          <div class="category-card" data-category="Math">
+            <div class="category-label">MATH</div>
+          </div>
+          <div class="category-card" data-category="Science">
+            <div class="category-label">SCIENCE</div>
+          </div>
+          <div class="category-card" data-category="Vocabulary">
+            <div class="category-label">VOCABULARY</div>
+          </div>
+        </div>
+
+        <div class="subcategories hidden" id="subcategory-list">
+          <!-- Subcategory buttons will be dynamically injected from Function.js -->
+        </div>
+        <button id="startButton" class="hidden">Start Quiz</button>
+      </div>
+
+      <div id="quiz-area" class="hidden">
+        <div class="header">
+          <div class="streak">
+            🔥 Streak:
+            <div class="streak-bar">
+              <div
+                class="streak-progress"
+                id="streakBar"
+                style="width: 0%"
+              ></div>
+            </div>
+          </div>
+          <div class="score" id="score">Score: 0</div>
+          <div id="livesCount" class="score">Lives: 3</div>
+        </div>
+
+        <div class="question-info">
+          <span class="question-number" id="questionNumber">Question 1</span>
+        </div>
+
+        <div class="question-box" id="questionBox">Question text goes here</div>
+        <div class="choices" id="choicesContainer"></div>
+      </div>
+
+      <div id="game-over" class="hidden">
+        <div class="trophy">🏆</div>
+        <h2>Quiz Completed!</h2>
+        <div class="stats">
+          <div class="stat-box">
+            <strong>Score:</strong>
+            <p id="finalScore">0</p>
+          </div>
+          <div class="stat-box">
+            <strong>Streak:</strong>
+            <p id="finalStreak">0</p>
+          </div>
+        </div>
+        <button id="play-again">🔁 Play Again</button>
+      </div>
+    </div>
+
+    <script src="mcq.js"></script>
+    <script src="function.js"></script>
+  </body>
+</html>
