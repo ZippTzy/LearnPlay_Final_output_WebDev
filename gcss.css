@@ -159,22 +159,22 @@ header {
 }
 
 .category-card[data-category="Math"] {
-  background-image: url("../assets/math.png");
+  background-image: url("assets/math.png");
   background-color: #d1d5db;
 }
 
 .category-card[data-category="Science"] {
-  background-image: url("../assets/science.png");
+  background-image: url("assets/science.png");
   background-color: #c7d2fe;
 }
 
 .category-card[data-category="Vocabulary"] {
-  background-image: url("../assets/vocabulary.png");
+  background-image: url("assets/vocabulary.png");
   background-color: #fde68a;
 }
 
 .category-card[data-category="Filipino"] {
-  background-image: url("../assets/quiz.png");
+  background-image: url("assets/quiz.png");
   background-color: #fde68a;
 }
 
@@ -320,6 +320,15 @@ header {
 .hidden {
   display: none;
 }
+.prof{
+  text-decoration: none;
+  color: white;
+}
+.abo{
+  text-decoration:none;
+  color: white;
+}
+
 
 @media (max-width: 1200px) and (min-width: 901px) {
   .quiz-container {
