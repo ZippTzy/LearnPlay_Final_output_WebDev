@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LearnPlay</title>
+    <link rel="stylesheet" href="gcss.css" />
+  </head>
+  <body>
+    <header>
+      <div class="title">
+        <img src="../assets/mascot.png" alt="Mascot" class="topMascot" />
+          <h1 class="learnPlay">LearnPlay</h1>
+      </div>
+      <h1 class="elearn">E-LEARNING FOR KIDS</h1>
+  </header>
+    <div class="quiz-container">
+      <div class="user-category-container">
+        <div class="user-preview">
+          <img src="../assets/user.png" alt="User  Avatar" class="mascot" />
+          <div class="user-info">
+            <p class="username">@BabyNimo143</p>
+            <p class="details">Top Lambingiro</p>
+            <p class="details-sub">God of Lambing</p>
+          </div>
+        </div>
+        <div id="category-selection">
+          <h1 class="hidden" id="welcome"> Category</h1>
+          <div class="categories">
+            <div class="category-card" data-category="Math">
+              <div class="category-label">MATH</div>
+            </div>
+            <div class="category-card" data-category="Science">
+              <div class="category-label">SCIENCE</div>
+            </div>
+            <div class="category-card" data-category="Vocabulary">
+              <div class="category-label">VOCABULARY</div>
+            </div>
+            <div class="category-card" data-category="Filipino">
+              <div class="category-label">FILIPINO</div>
+            </div>
+
+            <div class="subcategories hidden" id="subcategory-list">
+              <!-- Function.js nai bahala ani, ayaw hilabti -->
+            </div>
+              <button id="startButton" class="hidden">Start Quiz</button>
+          </div>
+          </div>
+        </div>
+
+       
+    </div>
+    <script src="mcq.js"></script>
+    <script src="function.js"></script>
+    
+  </body>
+</html>
