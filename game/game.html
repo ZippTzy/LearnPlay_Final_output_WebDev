@@ -3,34 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Styled Quiz Game</title>
-    <link rel="stylesheet" href="gcss.css" />
+    <title>Quiz Game</title>
+    <link rel="stylesheet" href="/game/game.css" />
   </head>
   <body>
     <div class="quiz-container">
-      <div id="category-selection">
-        <h1 class="title">Pick a Category</h1>
-        <p class="subtitle">Choose your topic and get ready!</p>
-
-        <div class="categories">
-          <div class="category-card" data-category="Math">
-            <div class="category-label">MATH</div>
-          </div>
-          <div class="category-card" data-category="Science">
-            <div class="category-label">SCIENCE</div>
-          </div>
-          <div class="category-card" data-category="Vocabulary">
-            <div class="category-label">VOCABULARY</div>
-          </div>
-        </div>
-
-        <div class="subcategories hidden" id="subcategory-list">
-          <!-- Subcategory buttons will be dynamically injected from Function.js -->
-        </div>
-        <button id="startButton" class="hidden">Start Quiz</button>
-      </div>
-
-      <div id="quiz-area" class="hidden">
+      <div id="quiz-area">
         <div class="header">
           <div class="streak">
             🔥 Streak:
@@ -42,8 +20,9 @@
               ></div>
             </div>
           </div>
-          <div class="score" id="score">Score: 0</div>
-          <div id="livesCount" class="score">Lives: 3</div>
+          <div class="score" id="score">Score: 0  / 10</div>
+          <div class="score" id="livesCount" >Lives: 3</div>
+          <div class="exit" id="exitButton">Exit</div>
         </div>
 
         <div class="question-info">
@@ -52,6 +31,7 @@
 
         <div class="question-box" id="questionBox">Question text goes here</div>
         <div class="choices" id="choicesContainer"></div>
+        
       </div>
 
       <div id="game-over" class="hidden">
@@ -63,6 +43,10 @@
             <p id="finalScore">0</p>
           </div>
           <div class="stat-box">
+            <strong>Given Question</strong>
+            <p id="allQuestion">0</p>
+          </div>
+          <div class="stat-box">
             <strong>Streak:</strong>
             <p id="finalStreak">0</p>
           </div>
@@ -71,7 +55,7 @@
       </div>
     </div>
 
-    <script src="mcq.js"></script>
-    <script src="function.js"></script>
+    <script src="/game/game.js"></script>
+    
   </body>
 </html>

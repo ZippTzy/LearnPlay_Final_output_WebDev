@@ -514,8 +514,337 @@ const vocabularyQuestions = {
   ],
 };
 
+const filipinoQuestions = {
+  History: [
+    {
+      question: "When did the Philippines become free from Spain?",
+      options: [
+        "June 12, 1898",
+        "July 4, 1946",
+        "August 21, 1983",
+        "November 30, 1896",
+      ],
+      correctAnswer: "June 12, 1898",
+    },
+    {
+      question: "What group did Andres Bonifacio start to fight for freedom?",
+      options: [
+        "La Liga Filipina",
+        "Katipunan",
+        "Propaganda Movement",
+        "New Society Movement",
+      ],
+      correctAnswer: "Katipunan",
+    },
+    {
+      question:
+        "Where was the peace deal called the Pact of Biak-na-Bato signed?",
+      options: ["Cavite", "Bulacan", "Laguna", "Manila"],
+      correctAnswer: "Bulacan",
+    },
+    {
+      question: "When did the Spanish come to the Philippines?",
+      options: ["1521", "1565", "1898", "1942"],
+      correctAnswer: "1521",
+    },
+    {
+      question: "What government did Emilio Aguinaldo lead?",
+      options: [
+        "Revolutionary Government",
+        "Commonwealth",
+        "Republic",
+        "Kingdom",
+      ],
+      correctAnswer: "Revolutionary Government",
+    },
+    {
+      question: "Who was the first Filipino to become governor-general?",
+      options: [
+        "Diego Silang",
+        "Manuel Quezon",
+        "Carlos Garcia",
+        "Rafael Palma",
+      ],
+      correctAnswer: "Rafael Palma",
+    },
+    {
+      question:
+        "What country did the Philippines fight in the Philippine-American War?",
+      options: ["Spain", "America", "Japan", "China"],
+      correctAnswer: "America",
+    },
+    {
+      question: "Which country controlled the Philippines in World War II?",
+      options: ["Japan", "Spain", "America", "Germany"],
+      correctAnswer: "Japan",
+    },
+    {
+      question: "What secret group wanted to free the Philippines from Spain?",
+      options: ["Katipunan", "Kabataan", "Kalayaan", "Kalibapi"],
+      correctAnswer: "Katipunan",
+    },
+    {
+      question: "Where did Ferdinand Magellan arrive in 1521?",
+      options: ["Cebu", "Luzon", "Mindanao", "Palawan"],
+      correctAnswer: "Cebu",
+    },
+  ],
+  Heroes: [
+    {
+      question: "Who wrote the book Noli Me Tangere?",
+      options: [
+        "Andres Bonifacio",
+        "Jose Rizal",
+        "Emilio Aguinaldo",
+        "Apolinario Mabini",
+      ],
+      correctAnswer: "Jose Rizal",
+    },
+    {
+      question: "Who was called the 'Brains of the Revolution'?",
+      options: [
+        "Apolinario Mabini",
+        "Andres Bonifacio",
+        "Gregorio del Pilar",
+        "Jose Rizal",
+      ],
+      correctAnswer: "Apolinario Mabini",
+    },
+    {
+      question: "Who led the Katipunan group?",
+      options: [
+        "Jose Rizal",
+        "Andres Bonifacio",
+        "Emilio Jacinto",
+        "Antonio Luna",
+      ],
+      correctAnswer: "Andres Bonifacio",
+    },
+    {
+      question: "Who was the youngest Filipino general?",
+      options: [
+        "Jose Abad Santos",
+        "Gregorio del Pilar",
+        "Emilio Aguinaldo",
+        "Miguel Malvar",
+      ],
+      correctAnswer: "Gregorio del Pilar",
+    },
+    {
+      question: "Who became the first president of the Philippines?",
+      options: [
+        "Jose Rizal",
+        "Andres Bonifacio",
+        "Emilio Aguinaldo",
+        "Manuel Quezon",
+      ],
+      correctAnswer: "Emilio Aguinaldo",
+    },
+    {
+      question: "Who is the national hero of the Philippines?",
+      options: ["Jose Rizal", "Manuel Quezon", "Andres Bonifacio", "Lapu-Lapu"],
+      correctAnswer: "Jose Rizal",
+    },
+    {
+      question: "Who fought against Magellan in Mactan?",
+      options: ["Lapu-Lapu", "Rajah Sulayman", "Diego Silang", "Carlos Garcia"],
+      correctAnswer: "Lapu-Lapu",
+    },
+    {
+      question: "Who was the wife of Diego Silang and became a hero too?",
+      options: [
+        "Melchora Aquino",
+        "Gabriela Silang",
+        "Josefa Llanes Escoda",
+        "Maria Clara",
+      ],
+      correctAnswer: "Gabriela Silang",
+    },
+    {
+      question: "Who helped take care of wounded Filipino soldiers?",
+      options: [
+        "Melchora Aquino",
+        "Gabriela Silang",
+        "Leona Florentino",
+        "Corazon Aquino",
+      ],
+      correctAnswer: "Melchora Aquino",
+    },
+    {
+      question: "Who helped make the Philippine flag?",
+      options: [
+        "Marcela Agoncillo",
+        "Jose Rizal",
+        "Emilio Aguinaldo",
+        "Gabriela Silang",
+      ],
+      correctAnswer: "Marcela Agoncillo",
+    },
+  ],
+  Presidents: [
+    {
+      question: "Who was the first President of the Philippines?",
+      options: [
+        "Manuel Quezon",
+        "Emilio Aguinaldo",
+        "Jose Laurel",
+        "Fidel Ramos",
+      ],
+      correctAnswer: "Emilio Aguinaldo",
+    },
+    {
+      question: "Who was the first President of the Commonwealth?",
+      options: [
+        "Manuel Quezon",
+        "Ramon Magsaysay",
+        "Carlos Garcia",
+        "Diosdado Macapagal",
+      ],
+      correctAnswer: "Manuel Quezon",
+    },
+    {
+      question: "Who was the President during Martial Law?",
+      options: [
+        "Ferdinand Marcos",
+        "Corazon Aquino",
+        "Gloria Arroyo",
+        "Joseph Estrada",
+      ],
+      correctAnswer: "Ferdinand Marcos",
+    },
+    {
+      question: "Who was the first female President of the Philippines?",
+      options: [
+        "Gloria Arroyo",
+        "Imelda Marcos",
+        "Cory Aquino",
+        "Miriam Santiago",
+      ],
+      correctAnswer: "Cory Aquino",
+    },
+    {
+      question: "Who became President after Marcos left?",
+      options: [
+        "Joseph Estrada",
+        "Fidel Ramos",
+        "Corazon Aquino",
+        "Ninoy Aquino",
+      ],
+      correctAnswer: "Corazon Aquino",
+    },
+    {
+      question: "Who was the President before Bongbong Marcos?",
+      options: [
+        "Rodrigo Duterte",
+        "Benigno Aquino III",
+        "Joseph Estrada",
+        "Fidel Ramos",
+      ],
+      correctAnswer: "Rodrigo Duterte",
+    },
+    {
+      question: "Who was the President during the EDSA People Power in 1986?",
+      options: [
+        "Ferdinand Marcos",
+        "Corazon Aquino",
+        "Gloria Arroyo",
+        "Manuel Roxas",
+      ],
+      correctAnswer: "Ferdinand Marcos",
+    },
+    {
+      question: "Who is known as the 'Champion of the Common Man'?",
+      options: [
+        "Ramon Magsaysay",
+        "Carlos Garcia",
+        "Elpidio Quirino",
+        "Diosdado Macapagal",
+      ],
+      correctAnswer: "Ramon Magsaysay",
+    },
+    {
+      question: "Who made Filipino the national language?",
+      options: ["Manuel Quezon", "Jose Laurel", "Fidel Ramos", "Gloria Arroyo"],
+      correctAnswer: "Manuel Quezon",
+    },
+    {
+      question: "Who is the current President of the Philippines (2025)?",
+      options: [
+        "Rodrigo Duterte",
+        "Bongbong Marcos",
+        "Leni Robredo",
+        "Manny Pacquiao",
+      ],
+      correctAnswer: "Bongbong Marcos",
+    },
+  ],
+  Grammar: [
+    {
+      question: "What is a pangngalan?",
+      options: [
+        "An action word",
+        "A name of a person, place, or thing",
+        "A describing word",
+        "A sound",
+      ],
+      correctAnswer: "A name of a person, place, or thing",
+    },
+    {
+      question: "Which one is a pandiwa (verb)?",
+      options: ["Takbo", "Mesa", "Aso", "Ganda"],
+      correctAnswer: "Takbo",
+    },
+    {
+      question: "Which one is a pang-uri (adjective)?",
+      options: ["Maganda", "Kumain", "Lamesa", "Bata"],
+      correctAnswer: "Maganda",
+    },
+    {
+      question: "What is the plural of 'bata' in Filipino?",
+      options: ["Batang", "Batain", "Mga bata", "Batas"],
+      correctAnswer: "Mga bata",
+    },
+    {
+      question: "Which sentence is correct?",
+      options: [
+        "Ako ay masaya.",
+        "Masaya ako ay.",
+        "Ay ako masaya.",
+        "Masaya ay ako.",
+      ],
+      correctAnswer: "Ako ay masaya.",
+    },
+    {
+      question: "Which one is a panghalip (pronoun)?",
+      options: ["Ako", "Takbo", "Ganda", "Mesa"],
+      correctAnswer: "Ako",
+    },
+    {
+      question: "What is the opposite of 'malaki'?",
+      options: ["Matangkad", "Maliit", "Masaya", "Maingay"],
+      correctAnswer: "Maliit",
+    },
+    {
+      question: "Which word is spelled correctly?",
+      options: ["Magnda", "Maganda", "Magadah", "Magganda"],
+      correctAnswer: "Maganda",
+    },
+    {
+      question: "What punctuation mark ends a question?",
+      options: [".", "!", ",", "?"],
+      correctAnswer: "?",
+    },
+    {
+      question: "Which one is a complete sentence?",
+      options: ["Ang aso.", "Tumakbo ang aso.", "Tumakbo.", "Aso tumakbo."],
+      correctAnswer: "Tumakbo ang aso.",
+    },
+  ],
+};
+
 window.quizData = {
   Math: generateMathQuestions(),
   Science: scienceQuestions,
   Vocabulary: vocabularyQuestions,
+  Filipino: filipinoQuestions,
 };
