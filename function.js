@@ -5,6 +5,10 @@ const choicesEl = document.getElementById("choicesContainer");
 const startButton = document.getElementById("startButton");
 const subcategoryList = document.getElementById("subcategory-list");
 const categoryCards = document.querySelectorAll(".category-card");
+const btnAchievements = document.getElementById("achievements");
+const btnAbout = document.getElementById("about");
+const btnProfile = document.getElementById("profile");
+
 
 document.addEventListener("DOMContentLoaded", () => {
   const categoryCards = document.querySelectorAll(".category-card");
@@ -162,10 +166,23 @@ function startQuiz() {
         currentSubcategory,
       })
     );
-    window.location.href = "/game/game.html";
+    window.location.href = "../game/game.html";
   } else {
     alert("Please select both Category and Sub-category.");
   }
 }
 
 startButton.addEventListener("click", startQuiz);
+
+btnAchievements.addEventListener("click", function(){
+  window.location.href = "../game/game.html";
+});
+
+btnAbout.addEventListener("click", function(){
+  window.location.href = "../about/about.html";
+});
+
+btnProfile.addEventListener("click", function(){
+  window.location.href = "../profile/profile.html";
+});
+
