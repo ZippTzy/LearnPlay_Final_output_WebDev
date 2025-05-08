@@ -8,8 +8,6 @@ const quizArea = document.getElementById("quiz-area");
 const button = document.getElementById("play-again");
 const exit = document.getElementById("exitButton");
 
-
-
 let tries = 3;
 let streak = 0;
 let score = 0;
@@ -27,7 +25,7 @@ function retrieveQuestion() {
 
   if (!currentCategory || !currentSubcategory) {
     alert("Missing selection. Redirecting to the main page.");
-    window.location.href = "/home/homepage.html";
+    window.location.href = "/landingPage.html";
     return;
   }
 
@@ -35,7 +33,7 @@ function retrieveQuestion() {
 
   if (!questions || questions.length === 0) {
     alert("No questions found for this category.");
-    window.location.href = "/home/homepage.html";
+    window.location.href = "/landingPage.html";
     return;
   }
 
@@ -90,8 +88,8 @@ function handleAnswer(isCorrect, btn) {
 
   if (isCorrect) {
     btn.classList.add("correct");
-    streak++; 
-    score++; 
+    streak++;
+    score++;
     consecutiveCorrect++;
     if (consecutiveCorrect === 2 && tries < maxLives) {
       tries++;
@@ -99,7 +97,7 @@ function handleAnswer(isCorrect, btn) {
     }
   } else {
     btn.classList.add("incorrect");
-    streak = Math.max(0, streak - 1); 
+    streak = Math.max(0, streak - 1);
     tries--;
     consecutiveCorrect = 0;
 
@@ -116,10 +114,10 @@ function handleAnswer(isCorrect, btn) {
     document.getElementById("quiz-area").classList.add("hidden");
     document.getElementById("game-over").classList.remove("hidden");
 
-    document.getElementById("finalScore").textContent = score; 
+    document.getElementById("finalScore").textContent = score;
     document.getElementById("allQuestion").textContent =
-      currentQuestionIndex + 1; 
-    document.getElementById("finalStreak").textContent = streak; 
+      currentQuestionIndex + 1;
+    document.getElementById("finalStreak").textContent = streak;
     return;
   }
 
@@ -137,8 +135,8 @@ function handleAnswer(isCorrect, btn) {
 }
 
 function updateUI() {
-  streakCountEl.style.width = `${Math.min(streak, 10) * 10}%`; 
-  scoreEl.textContent = `Score: ${score}`; 
+  streakCountEl.style.width = `${Math.min(streak, 10) * 10}%`;
+  scoreEl.textContent = `Score: ${score}`;
   livesCountEl.textContent = `Lives: ${tries}`;
   questionNumberEl.textContent = `Question ${currentQuestionIndex + 1}`;
 }
@@ -147,28 +145,24 @@ function resetGame() {
   localStorage.removeItem("userSelected");
   localStorage.removeItem("quizQuestions");
   currentQuestionIndex = 0;
-
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   retrieveQuestion();
 });
 
-
-button.addEventListener("click", function() {
+button.addEventListener("click", function () {
   tries = 3;
   streak = 0;
   score = 0;
   consecutiveCorrect = 0;
   usedQuestions = [];
   currentQuestionIndex = 0;
-  window.location.href = "/home/homepage.html";
+  window.location.href = "/index.html";
   resetGame();
 });
 
 exit.addEventListener("click", function () {
   resetGame();
-  window.location.href = "/home/homepage.html";
+  window.location.href = "/landingPage.html";
 });
-
-

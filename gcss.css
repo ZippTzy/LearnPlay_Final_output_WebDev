@@ -26,29 +26,38 @@ header {
   position: absolute;
   top: 0;
   left: 0;
-  width: 98.7%;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
-  padding: 10px;
-  align-items: flex-start;
+  justify-content: space-between; 
+  align-items: center; 
   background: linear-gradient(to right, #75164c, #4e2474);
   z-index: 10;
 }
 
 .title {
   display: flex;
-  margin-top: .5rem;
-  align-self: center;
-  gap: 1rem;
-  padding: 0;
+  align-items: center; 
+  gap: .5rem;
 }
 
-.learnPlay{
+.header-words {
+  display: inline-flex;
+  font-size: 1.5rem; 
+  color: whitesmoke; 
+  margin: 0 0.5rem; 
+  cursor: pointer; 
+  transition: color 0.3s; 
+}
+
+.header-words:hover {
+  color: #ca58ff; 
+}
+
+.learnPlay {
   display: inline;
   text-decoration: none;
   font-size: 2rem;
   color: whitesmoke;
-  margin-top: 0rem;
 }
 
 .topMascot {
@@ -60,14 +69,10 @@ header {
 
 .elearn {
   font-size: 2.5rem;
-  display: inline-block;
-  margin-right: 32rem;
   color: white;
-  padding: 0;
-}
-
-#category-selection {
-  padding: 1.2rem;
+  text-align: center; 
+  flex-grow: 1; 
+  margin-left: 19rem;
 }
 
 .user-preview {
@@ -115,20 +120,21 @@ header {
   gap: 1.5rem;
   margin-top: 3rem;
   margin-right: 1rem;
+  padding: 1.2rem;
 }
 
 .user-preview .mascot {
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  margin-left: 7rem;
+  margin-left: 6rem;
   margin-top: 7rem;
 }
 
 .user-info .username {
   font-size: 1.75rem;
   color: #ffffff;
-  margin-left: 4rem;
+  margin-left: 3rem;
   margin-top: 5px;
   display: grid;
   margin-bottom: 0px;
@@ -136,7 +142,7 @@ header {
 .user-info .details,
 .user-info .details-sub {
   font-size: 1rem;
-  margin-left: 6rem;
+  margin-left: 5.5rem;
   margin-top: 0px;
   margin-bottom: 0.1px;
   color: #ffffff;
@@ -227,7 +233,8 @@ header {
   width: 10rem;
   height: 5rem;
   margin-top: 1rem;
-  gap: 0rem;
+  gap: 1rem;
+  padding: 1rem;
 }
 
 #subcategories-list {
@@ -266,7 +273,7 @@ header {
 
 .subcategory-btn {
   position: relative;
-  padding: 1rem;
+  padding: 2rem;
   border-radius: 1rem;
   height: 7rem;
   width: 10rem;
@@ -314,5 +321,138 @@ header {
   display: none;
 }
 
+@media (max-width: 1200px) and (min-width: 901px) {
+  .quiz-container {
+    width: 85%;
+  }
 
+  .elearn {
+    margin-right: 28%;
+  }
 
+  .category-card {
+    width: 13rem;
+    font-size: 8rem;
+  }
+
+  .subcategory-btn {
+    width: 8rem;
+    height: 6rem;
+  }
+
+  .user-preview {
+    width: 80%;
+  }
+}
+
+@media (max-width: 900px) and (min-width: 601px) {
+  .quiz-container {
+    width: 90%;
+    height: 50rem;
+  }
+
+  .elearn {
+    margin-right: 25%;
+    font-size: 2rem;
+  }
+
+  .learnPlay {
+    font-size: 1.5rem;
+  }
+
+  .user-preview {
+    width: 30%;
+    height: 50rem;
+  }
+
+  .category-card {
+    margin-top: 0px;
+    width: 100%;
+    height: 6rem;
+    font-size: 6rem;
+    gap: 5rem;
+  }
+
+  .subcategory-btn {
+    width: 100%;
+    height: 5rem;
+  }
+
+  #startButton {
+    width: 100%;
+    margin-top: 2rem;
+  }
+
+  .categories {
+    grid-template-columns: 1fr;
+  }
+
+  .subcategories {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .quiz-container {
+    width: 95%;
+    height: auto;
+    margin-top: 2rem;
+    padding: 1rem;
+  }
+
+  header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .elearn {
+    margin-right: 0;
+    font-size: 1.5rem;
+  }
+
+  .learnPlay {
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+  }
+
+  .user-preview {
+    width: 100%;
+    height: auto;
+    padding: 1rem;
+    align-items: center;
+  }
+
+  .user-preview .mascot {
+    margin-left: 0;
+    margin-top: 2rem;
+  }
+
+  .user-info .username,
+  .user-info .details,
+  .user-info .details-sub {
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .category-card {
+    width: 100%;
+    height: auto;
+    font-size: 4rem;
+  }
+
+  .subcategory-btn {
+    width: 100%;
+    height: auto;
+  }
+
+  #startButton {
+    width: 100%;
+    margin: 2rem 0;
+  }
+
+  .categories,
+  .subcategories {
+    flex-direction: column;
+    align-items: center;
+  }
+}
