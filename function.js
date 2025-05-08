@@ -5,9 +5,54 @@ const choicesEl = document.getElementById("choicesContainer");
 const startButton = document.getElementById("startButton");
 const subcategoryList = document.getElementById("subcategory-list");
 const categoryCards = document.querySelectorAll(".category-card");
-const btnAchievements = document.getElementById("achievements");
 const btnAbout = document.getElementById("about");
 const btnProfile = document.getElementById("profile");
+
+document.addEventListener("DOMContentLoaded", () => {
+  const loginBtn = document.getElementById("login-btn");
+  const usernameEl = document.querySelector(".username");
+  const userPreview = document.querySelector(".user-preview");
+
+  // Fetch user data from the backend (adjust PHP path as needed)
+  fetch("../user/get_user.php")
+    .then((response) => response.json())
+    .then((userData) => {
+      if (userData && userData.username) {
+        // If logged in, display the username
+        usernameEl.textContent = `@${userData.username}`;
+        loginBtn.classList.add("hiddn");
+
+        // Enable category selection
+        categoryCards.forEach((card) => {
+          card.style.pointerEvents = "auto";
+          card.style.opacity = "1";
+        });
+      } else {
+        // If not logged in, show the Register button
+        usernameEl.textContent = "@UserName";
+        loginBtn.classList.remove("hiddn");
+
+        // Disable category selection
+        categoryCards.forEach((card) => {
+          card.style.pointerEvents = "none";
+          card.style.opacity = "0.5";
+        });
+
+        // Block interaction with category area
+        document.querySelector(".categories").addEventListener("click", () => {
+          alert("Please register or log in before selecting a category.");
+        });
+      }
+    })
+    .catch((error) => {
+      console.error("Error fetching user data:", error);
+    });
+
+  // Redirect to login/register page when clicked
+  loginBtn.addEventListener("click", () => {
+    window.location.href = "../user/login.html";
+  });
+});
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -174,15 +219,11 @@ function startQuiz() {
 
 startButton.addEventListener("click", startQuiz);
 
-btnAchievements.addEventListener("click", function(){
-  window.location.href = "../game/game.html";
-});
-
-btnAbout.addEventListener("click", function(){
+btnAbout.addEventListener("click", function () {
   window.location.href = "../about/about.html";
 });
 
-btnProfile.addEventListener("click", function(){
+btnProfile.addEventListener("click", function () {
   window.location.href = "../profile/profile.html";
 });
 

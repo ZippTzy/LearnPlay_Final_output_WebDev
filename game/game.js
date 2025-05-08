@@ -158,7 +158,7 @@ button.addEventListener("click", function () {
   consecutiveCorrect = 0;
   usedQuestions = [];
   currentQuestionIndex = 0;
-  window.location.href = "/index.html";
+  window.location.href = "/landingPage.html";
   resetGame();
 });
 
