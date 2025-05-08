@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Redirect to login/register page when clicked
   loginBtn.addEventListener("click", () => {
-    window.location.href = "../user/login.html";
+    window.location.href = "user/login.html";
   });
 });
 
@@ -99,28 +99,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const subcategories = {
   Math: [
-    { name: "Addition", image: "../../assets/add.png" },
-    { name: "Subtraction", image: "../../assets/subtract.png" },
-    { name: "Multiplication", image: "../../assets/multiply.png" },
-    { name: "Division", image: "../../assets/divide.png" },
+    { name: "Addition", image: "assets/add.png" },
+    { name: "Subtraction", image: "assets/subtract.png" },
+    { name: "Multiplication", image: "assets/multiply.png" },
+    { name: "Division", image: "assets/divide.png" },
   ],
   Science: [
-    { name: "Astronomy", image: "../assets/astronomy.png" },
-    { name: "Experiments", image: "../assets/experiements.png" },
-    { name: "Biology", image: "../assets/biology.png" },
-    { name: "Geography", image: "../assets/geography.png" },
+    { name: "Astronomy", image: "assets/astronomy.png" },
+    { name: "Experiments", image: "assets/experiements.png" },
+    { name: "Biology", image: "assets/biology.png" },
+    { name: "Geography", image: "assets/geography.png" },
   ],
   Vocabulary: [
-    { name: "Reading", image: "../assets/reading.png" },
-    { name: "Writing", image: "../assets/writing.png" },
-    { name: "Letters", image: "../assets/letters.png" },
-    { name: "Numbers", image: "../assets/numbers.png" },
+    { name: "Reading", image: "assets/reading.png" },
+    { name: "Writing", image: "assets/writing.png" },
+    { name: "Letters", image: "assets/letters.png" },
+    { name: "Numbers", image: "assets/numbers.png" },
   ],
   Filipino: [
-    { name: "History", image: "../assets/history.png" },
-    { name: "Heroes", image: "../assets/heroes.png" },
-    { name: "Presidents", image: "../assets/president.png" },
-    { name: "Grammar", image: "../assets/grammar.png" },
+    { name: "History", image: "assets/history.png" },
+    { name: "Heroes", image: "assets/heroes.png" },
+    { name: "Presidents", image: "assets/president.png" },
+    { name: "Grammar", image: "assets/grammar.png" },
   ],
 };
 
@@ -211,7 +211,7 @@ function startQuiz() {
         currentSubcategory,
       })
     );
-    window.location.href = "../game/game.html";
+    window.location.href = "game/game.html";
   } else {
     alert("Please select both Category and Sub-category.");
   }
@@ -220,10 +220,10 @@ function startQuiz() {
 startButton.addEventListener("click", startQuiz);
 
 btnAbout.addEventListener("click", function () {
-  window.location.href = "../about/about.html";
+  window.location.href = "about/about.html";
 });
 
 btnProfile.addEventListener("click", function () {
-  window.location.href = "../profile/profile.html";
+  window.location.href = "profile/profile.html";
 });
 
