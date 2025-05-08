@@ -91,7 +91,7 @@ body {
 }
 
 .question-box {
-  background: #eff6ff;
+  background: #e4e9f0;
   padding: 1rem;
   border-radius: 0.75rem;
   margin-bottom: 1rem;
@@ -109,7 +109,7 @@ body {
   border-radius: 0.75rem;
   font-size: 1.25rem;
   font-weight: 700;
-  background: #f3f4f6;
+  background: #d5d7da;
   border: none;
   cursor: pointer;
   transition: all 0.2s;
