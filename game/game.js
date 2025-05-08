@@ -25,7 +25,7 @@ function retrieveQuestion() {
 
   if (!currentCategory || !currentSubcategory) {
     alert("Missing selection. Redirecting to the main page.");
-    window.location.href = "/landingPage.html";
+    window.location.href = "/index.html";
     return;
   }
 
@@ -33,7 +33,7 @@ function retrieveQuestion() {
 
   if (!questions || questions.length === 0) {
     alert("No questions found for this category.");
-    window.location.href = "/landingPage.html";
+    window.location.href = "/index.html";
     return;
   }
 
@@ -158,11 +158,11 @@ button.addEventListener("click", function () {
   consecutiveCorrect = 0;
   usedQuestions = [];
   currentQuestionIndex = 0;
-  window.location.href = "/landingPage.html";
+  window.location.href = "/index.html";
   resetGame();
 });
 
 exit.addEventListener("click", function () {
   resetGame();
-  window.location.href = "/landingPage.html";
+  window.location.href = "/index.html";
 });

@@ -3,7 +3,7 @@ const btnProfile = document.getElementById("profile");
 
 
 btnHome.addEventListener("click", function () {
-    window.location.href = "/landingPage.html";
+    window.location.href = "/index.html";
 });
 
 btnProfile.addEventListener("click", function () {

@@ -5,7 +5,7 @@ body {
   justify-content: center;
   align-items: center;
   background: linear-gradient(to right, #c72c84, #602296);
-  font-family: sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   padding: 2rem;
   font-weight: bolder;
 }
@@ -18,10 +18,8 @@ body {
 }
 
 .team-members {
-  display: flex; 
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
+  display: grid; 
+  grid-template-columns: repeat(5, 1fr);
   gap: 2rem; 
   margin-top: 5rem;
   padding: 2rem; 
@@ -55,10 +53,8 @@ header {
   display: flex;
   justify-content: space-between; 
   align-items: center; 
-  flex-wrap: wrap;
   background: linear-gradient(to right, #75164c, #4e2474);
   z-index: 10;
-  max-inline-size: 100%;
 }
 
 .title {
@@ -100,18 +96,5 @@ header {
   text-align: center; 
   flex-grow: 1; 
   margin-left: 11rem;
-}
-.team-pic{
-  border-radius: 5px;
-
-}
-.team-member{
-  background-color: whitesmoke;
-  color: black;
-  padding-top: 50px;
-  width: 270px;
-  height: 324px;
-  border-radius: 5px;
-  box-shadow: 5px 5px 5px 5px gray;
 }
 

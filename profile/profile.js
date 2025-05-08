@@ -2,7 +2,7 @@ const btnHome = document.getElementById("home");
 const btnAbout = document.getElementById("about");
 
 btnHome.addEventListener("click", function () {
-  window.location.href = "/landingPage.html";
+  window.location.href = "/index.html";
 });
 
 btnAbout.addEventListener("click", function () {

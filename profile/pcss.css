@@ -121,7 +121,7 @@ header {
 .profile-image {
   width: 150px;
   height: 150px;
-  background: url('assets/user.png') center;
+  background: url('/assets/user.png') center;
   background-size: cover;
   border-radius: 50%;
   border: 10px solid var(--primary-bg);
@@ -165,9 +165,5 @@ header {
 .data-item .value {
   color: var(--accent-color);
   font-size: var(--title-size);
-}
-.home-a{
-  text-decoration: none;
-  color: white;
 }
 
