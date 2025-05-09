@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const loginBtn = document.getElementById("login-btn");
 
   loginBtn.addEventListener("click", () => {
-    window.location.href = "../user/login.html";
+    window.location.href = "/user/login.html";
   });
 
   categoryCards.forEach((card) => {
