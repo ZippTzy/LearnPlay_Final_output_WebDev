@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const usernameEl = document.querySelector(".username");
   const userPreview = document.querySelector(".user-preview");
 
-  // Fetch user data from the backend (adjust PHP path as needed)
+  // Fetch user data 
   fetch("../user/get_user.php")
     .then((response) => response.json())
     .then((userData) => {
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
       } else {
         // If not logged in, show the Register button
         usernameEl.textContent = "@UserName";
-        loginBtn.classList.remove("hiddn");
+        loginBtn.classList.remove("hidden");
 
         // Disable category selection
         categoryCards.forEach((card) => {
