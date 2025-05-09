@@ -9,57 +9,15 @@ const btnAbout = document.getElementById("about");
 const btnProfile = document.getElementById("profile");
 
 document.addEventListener("DOMContentLoaded", () => {
-  const loginBtn = document.getElementById("login-btn");
-  const usernameEl = document.querySelector(".username");
-  const userPreview = document.querySelector(".user-preview");
-
-  // Fetch user data 
-  fetch("../user/get_user.php")
-    .then((response) => response.json())
-    .then((userData) => {
-      if (userData && userData.username) {
-        // If logged in, display the username
-        usernameEl.textContent = `@${userData.username}`;
-        loginBtn.classList.add("hiddn");
-
-        // Enable category selection
-        categoryCards.forEach((card) => {
-          card.style.pointerEvents = "auto";
-          card.style.opacity = "1";
-        });
-      } else {
-        // If not logged in, show the Register button
-        usernameEl.textContent = "@UserName";
-        loginBtn.classList.remove("hidden");
-
-        // Disable category selection
-        categoryCards.forEach((card) => {
-          card.style.pointerEvents = "none";
-          card.style.opacity = "0.5";
-        });
-
-        // Block interaction with category area
-        document.querySelector(".categories").addEventListener("click", () => {
-          alert("Please register or log in before selecting a category.");
-        });
-      }
-    })
-    .catch((error) => {
-      console.error("Error fetching user data:", error);
-    });
-
-  // Redirect to login/register page when clicked
-  loginBtn.addEventListener("click", () => {
-    window.location.href = "user/login.html";
-  });
-});
-
-
-document.addEventListener("DOMContentLoaded", () => {
   const categoryCards = document.querySelectorAll(".category-card");
   const userPreview = document.querySelector(".user-preview");
   const categoryH1 = document.getElementById("welcome");
   let selectedCategory = null;
+  const loginBtn = document.getElementById("login-btn");
+
+  loginBtn.addEventListener("click", () => {
+    window.location.href = "user/login.html";
+  });
 
   categoryCards.forEach((card) => {
     card.addEventListener("click", () => {
@@ -226,4 +184,3 @@ btnAbout.addEventListener("click", function () {
 btnProfile.addEventListener("click", function () {
   window.location.href = "profile/profile.html";
 });
-
