@@ -1,34 +1,56 @@
-const landingPage = document.getElementById("landingpage");
-const loginWrapper = document.getElementById("loginWrapper");
-const registerWrapper = document.getElementById("registerWrapper");
-const goLoginButton = document.getElementById("goLogin");
-const goRegisterButton = document.getElementById("goRegister");
-const showRegisterLink = document.getElementById("showRegisterLink");
-const showLoginLink = document.getElementById("showLoginLink");
-const signUp = document.getElementById("signup-btn");
-const signIn = document.getElementById("signIn-btn");
+document.addEventListener("DOMContentLoaded", () => {
+  const goLoginButton = document.getElementById("goLogin");
+  const goRegisterButton = document.getElementById("goRegister");
+  const showRegisterLink = document.getElementById("showRegisterLink");
+  const showLoginLink = document.getElementById("showLoginLink");
+  const signUp = document.getElementById("signUp-btn");
+  const signIn = document.getElementById("signIn-btn");
+  const forgortBtn = document.getElementById("forgot");
 
-goLoginButton.addEventListener("click", () => {
-  landingPage.style.display = "none";
-  loginWrapper.style.display = "flex";
-  registerWrapper.style.display = "none";
+
+  if (goLoginButton) {
+    goLoginButton.addEventListener("click", () => {
+      window.location.href = "login.html";
+    });
+  }
+
+  if (forgortBtn) {
+    forgortBtn.addEventListener("click", () => {
+      window.location.href = "forgotPass.html";
+    });
+  }
+
+  if (goRegisterButton) {
+    goRegisterButton.addEventListener("click", () => {
+      window.location.href = "register.html";
+    });
+  }
+
+  if (signUp) {
+    signUp.addEventListener("click", (e) => {
+      e.preventDefault();
+      window.location.href = "/home/homepage.html";
+    });
+  }
+
+  if (signIn) {
+    signIn.addEventListener("click", (e) => {
+      e.preventDefault();
+      window.location.href = "/home/homepage.html";
+    });
+  }
+
+  if (showRegisterLink) {
+    showRegisterLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      window.location.href = "register.html";
+    });
+  }
+
+  if (showLoginLink) {
+    showLoginLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      window.location.href = "login.html";
+    });
+  }
 });
-
-goRegisterButton.addEventListener("click", () => {
-  landingPage.style.display = "none";
-  loginWrapper.style.display = "none";
-  registerWrapper.style.display = "flex";
-});
-
-showRegisterLink.addEventListener("click", (e) => {
-  e.preventDefault();
-  loginWrapper.style.display = "none";
-  registerWrapper.style.display = "flex";
-});
-
-showLoginLink.addEventListener("click", (e) => {
-  e.preventDefault();
-  registerWrapper.style.display = "none";
-  loginWrapper.style.display = "flex";
-});
-

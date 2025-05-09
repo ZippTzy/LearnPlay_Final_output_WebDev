@@ -9,16 +9,31 @@ const btnAbout = document.getElementById("about");
 const btnProfile = document.getElementById("profile");
 
 document.addEventListener("DOMContentLoaded", () => {
-  const categoryCards = document.querySelectorAll(".category-card");
   const userPreview = document.querySelector(".user-preview");
   const categoryH1 = document.getElementById("welcome");
   let selectedCategory = null;
   const loginBtn = document.getElementById("login-btn");
-
+  const modeImg = document.getElementById("modeImg");
+  const modeSelector = document.getElementById("mode-selector");
+  const modeDiv = document.getElementById("modeDiv");
+  // Track mode toggle state
+  let isOnlineMode = true;
+  
+  modeDiv.addEventListener("click", () => {
+    if (isOnlineMode) {
+      modeSelector.textContent = "Online Course";
+      modeImg.src = "/assets/cedric.png";
+      modeImg.dataset.state = "offline";
+    } else {
+      modeSelector.textContent = "Online Games";
+      modeImg.src = "/assets/user.png";
+      modeImg.dataset.state = "online";
+    }
+    isOnlineMode = !isOnlineMode;
+  });
   loginBtn.addEventListener("click", () => {
     window.location.href = "/user/login.html";
   });
-
   categoryCards.forEach((card) => {
     card.addEventListener("click", () => {
       if (selectedCategory === card) {
@@ -31,6 +46,9 @@ document.addEventListener("DOMContentLoaded", () => {
         subcategoryList.classList.add("hidden");
         startButton.classList.add("hidden");
         userPreview.classList.remove("hidden");
+        // Show modeDiv and modeImg again
+        modeDiv.classList.remove("hidden");
+        modeImg.classList.remove("hidden");
       } else {
         selectedCategory = card;
         categoryCards.forEach((c) => {
@@ -42,14 +60,19 @@ document.addEventListener("DOMContentLoaded", () => {
             c.classList.remove("selected");
           }
         });
-
         document.querySelector(".categories").classList.add("single-row");
-
         const selectedName = card.getAttribute("data-category");
-        categoryH1.textContent = `Welcome to ${selectedName}`;
+        // Set the welcome message based on the mode
+        if (isOnlineMode) {
+          categoryH1.textContent = `Welcome to ${selectedName} Game!`;
+        } else {
+          categoryH1.textContent = `Welcome to ${selectedName} Course!`;
+        }
         categoryH1.classList.remove("hidden");
-
         userPreview.classList.add("hidden");
+        // Hide modeDiv and modeImg when a category is selected
+        modeDiv.classList.add("hidden");
+        modeImg.classList.add("hidden");
       }
     });
   });
@@ -57,28 +80,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const subcategories = {
   Math: [
-    { name: "Addition", image: "assets/add.png" },
-    { name: "Subtraction", image: "assets/subtract.png" },
-    { name: "Multiplication", image: "assets/multiply.png" },
-    { name: "Division", image: "assets/divide.png" },
+    { name: "Addition", image: "/assets/add.png" },
+    { name: "Subtraction", image: "/assets/subtract.png" },
+    { name: "Multiplication", image: "/assets/multiply.png" },
+    { name: "Division", image: "/assets/divide.png" },
   ],
   Science: [
-    { name: "Astronomy", image: "assets/astronomy.png" },
-    { name: "Experiments", image: "assets/experiements.png" },
-    { name: "Biology", image: "assets/biology.png" },
-    { name: "Geography", image: "assets/geography.png" },
+    { name: "Astronomy", image: "/assets/astronomy.png" },
+    { name: "Experiments", image: "/assets/experiements.png" },
+    { name: "Biology", image: "/assets/biology.png" },
+    { name: "Geography", image: "/assets/geography.png" },
   ],
   Vocabulary: [
-    { name: "Reading", image: "assets/reading.png" },
-    { name: "Writing", image: "assets/writing.png" },
-    { name: "Letters", image: "assets/letters.png" },
-    { name: "Numbers", image: "assets/numbers.png" },
+    { name: "Reading", image: "/assets/reading.png" },
+    { name: "Writing", image: "/assets/writing.png" },
+    { name: "Letters", image: "/assets/letters.png" },
+    { name: "Numbers", image: "/assets/numbers.png" },
   ],
   Filipino: [
-    { name: "History", image: "assets/history.png" },
-    { name: "Heroes", image: "assets/heroes.png" },
-    { name: "Presidents", image: "assets/president.png" },
-    { name: "Grammar", image: "assets/grammar.png" },
+    { name: "History", image: "/assets/history.png" },
+    { name: "Heroes", image: "/assets/heroes.png" },
+    { name: "Presidents", image: "/assets/president.png" },
+    { name: "Grammar", image: "/assets/grammar.png" },
   ],
 };
 
@@ -178,9 +201,9 @@ function startQuiz() {
 startButton.addEventListener("click", startQuiz);
 
 btnAbout.addEventListener("click", function () {
-  window.location.href = "about/about.html";
+  window.location.href = "/about/about.html";
 });
 
 btnProfile.addEventListener("click", function () {
-  window.location.href = "profile/profile.html";
+  window.location.href = "/profile/profile.html";
 });
