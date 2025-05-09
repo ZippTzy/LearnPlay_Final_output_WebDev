@@ -24,7 +24,10 @@ html {
   backdrop-filter: blur(8px);
   position: relative;
 }
-
+.login-card #remember-btn{
+  color: rgb(255, 255, 254);
+  font-size: 0.9rem;
+}
 .mascot {
   width: 16rem;
   height: 15rem;
