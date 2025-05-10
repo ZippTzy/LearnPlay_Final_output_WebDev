@@ -1,82 +1,27 @@
 let currentCategory = "";
 let currentSubcategory = "";
+let isOnlineMode = true;
 
 const choicesEl = document.getElementById("choicesContainer");
 const startButton = document.getElementById("startButton");
 const subcategoryList = document.getElementById("subcategory-list");
 const categoryCards = document.querySelectorAll(".category-card");
+const categoryContainer = document.querySelector(".categories");
 const btnAbout = document.getElementById("about");
 const btnProfile = document.getElementById("profile");
 
-document.addEventListener("DOMContentLoaded", () => {
-  const userPreview = document.querySelector(".user-preview");
-  const categoryH1 = document.getElementById("welcome");
-  let selectedCategory = null;
-  const loginBtn = document.getElementById("login-btn");
-  const modeImg = document.getElementById("modeImg");
-  const modeSelector = document.getElementById("mode-selector");
-  const modeDiv = document.getElementById("modeDiv");
-  // Track mode toggle state
-  let isOnlineMode = true;
-  
-  modeDiv.addEventListener("click", () => {
-    if (isOnlineMode) {
-      modeSelector.textContent = "Online Course";
-      modeImg.src = "/assets/cedric.png";
-      modeImg.dataset.state = "offline";
-    } else {
-      modeSelector.textContent = "Online Games";
-      modeImg.src = "/assets/user.png";
-      modeImg.dataset.state = "online";
-    }
-    isOnlineMode = !isOnlineMode;
-  });
-  loginBtn.addEventListener("click", () => {
-    window.location.href = "/user/login.html";
-  });
-  categoryCards.forEach((card) => {
-    card.addEventListener("click", () => {
-      if (selectedCategory === card) {
-        categoryCards.forEach((c) => {
-          c.classList.remove("hidden-category", "selected");
-        });
-        selectedCategory = null;
-        document.querySelector(".categories").classList.remove("single-row");
-        categoryH1.classList.add("hidden");
-        subcategoryList.classList.add("hidden");
-        startButton.classList.add("hidden");
-        userPreview.classList.remove("hidden");
-        // Show modeDiv and modeImg again
-        modeDiv.classList.remove("hidden");
-        modeImg.classList.remove("hidden");
-      } else {
-        selectedCategory = card;
-        categoryCards.forEach((c) => {
-          if (c === card) {
-            c.classList.remove("hidden-category");
-            c.classList.add("selected");
-          } else {
-            c.classList.add("hidden-category");
-            c.classList.remove("selected");
-          }
-        });
-        document.querySelector(".categories").classList.add("single-row");
-        const selectedName = card.getAttribute("data-category");
-        // Set the welcome message based on the mode
-        if (isOnlineMode) {
-          categoryH1.textContent = `Welcome to ${selectedName} Game!`;
-        } else {
-          categoryH1.textContent = `Welcome to ${selectedName} Course!`;
-        }
-        categoryH1.classList.remove("hidden");
-        userPreview.classList.add("hidden");
-        // Hide modeDiv and modeImg when a category is selected
-        modeDiv.classList.add("hidden");
-        modeImg.classList.add("hidden");
-      }
-    });
-  });
-});
+const gameSubcategories = [
+  {
+    name: "Rock Paper Scissors",
+    image: "/assets/biology.png",
+    link: "/game/rockpaper/index.html",
+  },
+  {
+    name: "Tic Tac Toe",
+    image: "/assets/add.png",
+    link: "/game/ticTacToe/index.html",
+  },
+];
 
 const subcategories = {
   Math: [
@@ -103,28 +48,103 @@ const subcategories = {
     { name: "Presidents", image: "/assets/president.png" },
     { name: "Grammar", image: "/assets/grammar.png" },
   ],
+  Minigames: gameSubcategories,
 };
 
-categoryCards.forEach((button) => {
-  button.addEventListener("click", () => {
-    categoryCards.forEach((b) => b.classList.remove("selected"));
-    button.classList.add("selected");
-    currentCategory = button.getAttribute("data-category");
-    console.log(`Current Category: ${currentCategory}`);
-    loadSubcategories();
-    subcategoryList.classList.remove("hidden");
-    startButton.classList.remove("hidden");
+document.addEventListener("DOMContentLoaded", () => {
+  const userPreview = document.querySelector(".user-preview");
+  const categoryH1 = document.getElementById("welcome");
+  let selectedCategory = null;
+  const logOut = document.getElementById("logOut-btn");
+  const modeImg = document.getElementById("modeImg");
+  const modeSelector = document.getElementById("mode-selector");
+  const modeDiv = document.getElementById("modeDiv");
+
+  modeDiv.addEventListener("click", () => {
+    isOnlineMode = !isOnlineMode;
+    modeSelector.textContent = isOnlineMode ? "Online Games" : "Online Course";
+    modeImg.src = isOnlineMode ? "/assets/user.png" : "/assets/cedric.png";
+
+    toggleMinigamesCategory(isOnlineMode);
+
+    subcategoryList.classList.add("hidden");
+    subcategoryList.innerHTML = "";
+    startButton.classList.add("hidden");
+    categoryH1.classList.add("hidden");
+    document.querySelectorAll(".category-card").forEach(c => c.classList.remove("selected", "hidden-category"));
+    document.querySelector(".categories").classList.remove("single-row");
+    selectedCategory = null;
+    currentSubcategory = "";
   });
+
+  logOut.addEventListener("click", () => {
+    window.location.href = "/user/landingPage.html";
+  });
+
+  categoryContainer.addEventListener("click", (e) => {
+    const card = e.target.closest(".category-card");
+
+    // Ignore subcategory buttons
+    if (!card || card.classList.contains("subcategory-btn")) return;
+
+    const selectedName = card.getAttribute("data-category");
+
+    if (card.classList.contains("selected")) {
+      card.classList.remove("selected");
+      document.querySelectorAll(".category-card").forEach(c => c.classList.remove("hidden-category"));
+      subcategoryList.classList.add("hidden");
+      subcategoryList.innerHTML = "";
+      startButton.classList.add("hidden");
+      categoryH1.classList.add("hidden");
+      userPreview.classList.remove("hidden");
+      modeDiv.classList.remove("hidden");
+      currentSubcategory = "";
+    } else {
+      document.querySelectorAll(".category-card").forEach(c => {
+        c.classList.toggle("hidden-category", c !== card);
+        c.classList.remove("selected");
+      });
+      card.classList.add("selected");
+      categoryH1.textContent = isOnlineMode ? `Welcome to ${selectedName} Game!` : `Welcome to ${selectedName} Course!`;
+      categoryH1.classList.remove("hidden");
+      currentCategory = selectedName;
+      loadSubcategories();
+      userPreview.classList.add("hidden");
+      modeDiv.classList.add("hidden");
+    }
+  });
+
+  toggleMinigamesCategory(isOnlineMode);
 });
+
+function toggleMinigamesCategory(isGameMode) {
+  const existing = document.querySelector('[data-category="Minigames"]');
+  if (isGameMode) {
+    if (!existing) {
+      const card = document.createElement("div");
+      card.className = "category-card minigames-card";
+      card.setAttribute("data-category", "Minigames");
+
+      const label = document.createElement("div");
+      label.className = "category-label";
+      label.textContent = "MINIGAMES";
+
+      card.appendChild(label);
+      categoryContainer.appendChild(card);
+    }
+  } else {
+    if (existing) {
+      existing.remove();
+    }
+  }
+}
 
 function loadSubcategories() {
   currentSubcategory = "";
   subcategoryList.innerHTML = "";
+  startButton.classList.add("hidden");
 
-  if (!subcategories[currentCategory]) {
-    console.error(`No subcategories found for category: "${currentCategory}"`);
-    return;
-  }
+  if (!subcategories[currentCategory]) return;
 
   subcategories[currentCategory].forEach((sub) => {
     const card = document.createElement("div");
@@ -143,19 +163,22 @@ function loadSubcategories() {
     wrapper.appendChild(label);
 
     card.onclick = () => {
-      document
-        .querySelectorAll(".subcategory-btn")
-        .forEach((b) => b.classList.remove("selected"));
+      document.querySelectorAll(".subcategory-btn").forEach((b) => b.classList.remove("selected"));
       card.classList.add("selected");
       currentSubcategory = sub.name;
-      console.log(
-        `Selected Category: ${currentCategory}, Subcategory: ${currentSubcategory}`
-      );
 
       window.userSelected = {
         currentCategory,
         currentSubcategory,
       };
+
+      if (currentCategory === "Minigames") {
+        startButton.classList.remove("hidden");
+        startButton.onclick = () => {
+          window.location.href = sub.link;
+        };
+        return;
+      }
 
       if (
         quizData &&
@@ -165,18 +188,19 @@ function loadSubcategories() {
         const questions = shuffleArray(
           quizData[currentCategory][currentSubcategory]
         ).slice(0, 10);
-        console.log(questions);
-
         localStorage.setItem("quizQuestions", JSON.stringify(questions));
       } else {
         alert("No questions found for this category.");
       }
 
       startButton.classList.remove("hidden");
+      startButton.onclick = startQuiz;
     };
 
     subcategoryList.appendChild(wrapper);
   });
+
+  subcategoryList.classList.remove("hidden");
 }
 
 function shuffleArray(array) {
@@ -192,7 +216,7 @@ function startQuiz() {
         currentSubcategory,
       })
     );
-    window.location.href = "game/game.html";
+    window.location.href = "/game/game.html";
   } else {
     alert("Please select both Category and Sub-category.");
   }

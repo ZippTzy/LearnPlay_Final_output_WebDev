@@ -4,6 +4,7 @@ html {
   padding: 0;
   height: 100%;
   font-family: "Arial", sans-serif;
+  cursor: default;
 }
 
 .wrapper {

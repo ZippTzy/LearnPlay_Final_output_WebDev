@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="icon"
+      href="../../assets/mascot.png"
+      sizes="32x32"
+      type="image/png"
+    />
+  </head>
+
+  <body>
+    <h1 id="title">Rock Paper Scissors</h1>
+
+    <div class="game-area">
+      <h1 id="opponent-score"><span class="oppScore">Opponent Score: </span>0</h1>
+
+      <div class="ui">
+        <div class="opponent">
+          <img id="opponent-choice" src="/game/rockpaper/assets/paper.png" />
+          <h1>Opponent Choice</h1>
+        </div>
+        <div class="you">
+          <img id="your-choice" src="/game/rockpaper/assets/rock.png" />
+          <h1>Your Choice</h1>
+        </div>
+      </div>
+
+      <h1 id="your-score"><span class="oppScore">Your Score: </span>0</h1>
+      <div id="choices"></div>
+    <section class="controls">
+        <button class="exit" id="firstExit">Exit</button>
+    </section>
+    </div>
+
+
+    <div id="game-over" class="hidden">
+      <div class="trophy">🏆</div>
+      <h2 id="game-result">You Win!</h2>
+      <div class="stats">
+        <div class="stat-box">
+          <strong>Your Score:</strong>
+          <p id="finalScore">0</p>
+        </div>
+        <div class="stat-box">
+          <strong>Total Rounds:</strong>
+          <p id="allQuestion">0</p>
+        </div>
+      </div>
+      <button id="play-again">Play Again</button>
+      <button class="exit" id="secondExit">Exit</button>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -3,6 +3,9 @@
     margin: 0;
     font-family: 'Itim', cursive;
 }
+body{
+    cursor: default;
+}
 
 .background {
     background-color: #12181B;
