@@ -36,8 +36,6 @@ function retrieveQuestion() {
     window.location.href = "../home/homepage.html";
     return;
   }
-
-  console.log(questions);
   updateUI();
   generateQuestion();
 }
@@ -61,7 +59,7 @@ function generateQuestion() {
   }
 
   const questionData =
-    remainingQuestions[Math.floor(Math.random() * remainingQuestions.length)];
+  remainingQuestions[Math.floor(Math.random() * remainingQuestions.length)];
   usedQuestions.push(questionData.question);
   questionEl.textContent = questionData.question;
 
@@ -116,7 +114,7 @@ function handleAnswer(isCorrect, btn) {
 
     document.getElementById("finalScore").textContent = score;
     document.getElementById("allQuestion").textContent =
-      currentQuestionIndex + 1;
+    currentQuestionIndex + 1;
     document.getElementById("finalStreak").textContent = streak;
     return;
   }

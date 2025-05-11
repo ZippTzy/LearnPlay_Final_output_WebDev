@@ -84,7 +84,6 @@ document.addEventListener("DOMContentLoaded", () => {
   categoryContainer.addEventListener("click", (e) => {
     const card = e.target.closest(".category-card");
 
-    // Ignore subcategory buttons
     if (!card || card.classList.contains("subcategory-btn")) return;
 
     const selectedName = card.getAttribute("data-category");

@@ -1,0 +1,95 @@
+CREATE DATABASE learnPlay_DB
+
+CREATE TABLE tblUsers (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE tblScores (
+    score_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    quiz_name VARCHAR(100),
+    score INT,
+    completed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES tblUsers(user_id)
+);
+
+CREATE TABLE tblSubjects (
+    subject_id INT AUTO_INCREMENT PRIMARY KEY,
+    NAME VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE tblCategories (
+    category_id INT AUTO_INCREMENT PRIMARY KEY,
+    subject_id INT,
+    NAME VARCHAR(255) NOT NULL,
+    FOREIGN KEY (subject_id) REFERENCES tblSubjects(subject_id)
+);
+
+CREATE TABLE tblQuestions (
+    question_id INT AUTO_INCREMENT PRIMARY KEY,
+    category_id INT,
+    question TEXT NOT NULL,
+    correct_answer VARCHAR(255) NOT NULL,
+    FOREIGN KEY (category_id) REFERENCES tblCategories(category_id)
+);
+
+CREATE TABLE tblOptions (
+    option_id INT AUTO_INCREMENT PRIMARY KEY,
+    question_id INT,
+    option_text VARCHAR(255) NOT NULL,
+    FOREIGN KEY (question_id) REFERENCES tblQuestions(question_id)
+);
+
+INSERT INTO tblSubjects (NAME) VALUES 
+('Math'),
+('Science'),
+('Vocabulary'),
+('Filipino');
+
+INSERT INTO tblCategories (subject_id, NAME) VALUES 
+(1, 'Addition'),
+(1, 'Subtraction'),
+(1, 'Multiplication'),
+(1, 'Division'),
+(2, 'Experiments'),
+(2, 'Astronomy'),
+(2, 'Biology'),
+(2, 'Geography'),
+(3, 'Reading'),
+(3, 'Writing'),
+(3, 'Letters'),
+(3, 'Numbers'),
+(4, 'History'),
+(4, 'Heroes'),
+(4, 'Presidents'),
+(4, 'Grammar');
+
+CREATE TABLE tblTicTacToeGame (
+    game_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    game_result ENUM('win', 'lose', 'draw') NOT NULL,
+    started_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    finished_at TIMESTAMP NULL,
+    duration_seconds INT NULL,
+    FOREIGN KEY (user_id) REFERENCES tblUsers(user_id),
+    INDEX idx_user_id (user_id)
+);
+
+CREATE TABLE tblRockPaperScissorsGame (
+    game_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    total_rounds INT NOT NULL,
+    wins INT DEFAULT 0,
+    losses INT DEFAULT 0,
+    draws INT DEFAULT 0,
+    score INT DEFAULT 0,
+    started_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    finished_at TIMESTAMP NULL,
+    duration_seconds INT NULL,
+    FOREIGN KEY (user_id) REFERENCES tblUsers(user_id),
+    INDEX idx_user_id (user_id)
+);
