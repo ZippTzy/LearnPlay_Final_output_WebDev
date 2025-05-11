@@ -180,6 +180,11 @@ header {
   background-color: #fde68a;
 }
 
+.category-card[data-category="Minigames"] {
+  background-image: url("/assets/minigames.png");
+  background-color: #fde68a;
+}
+
 .category-card.selected {
   border: 5px solid #22c55e;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
@@ -232,25 +237,28 @@ header {
   padding: 0;
 }
 
-.categories.single-row {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
-  gap: 1rem;
+.categories .single-row {
+  display: grid; /* Change from flex to grid */
+  grid-template-columns: repeat(5, 1fr); /* Create 5 equal columns */
+  gap: 1rem; /* Space between cards */
+  transition: all 0.3s ease;
+  height: 5rem;
+  margin-top: 0;
+  padding: 0;
 }
 
 .categories.single-row .category-card {
-  display: flex;
-  width: 10rem;
-  height: 5rem;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* Create 5 equal columns */
   margin-top: 1rem;
   gap: 1rem;
   padding: 1rem;
 }
 
 #subcategories-list {
-  display: flex;
-  grid-template-columns: repeat(4, 1fr);
-
+  display: grid;
+  margin-left: 1rem;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 #category-selection {
@@ -269,7 +277,7 @@ header {
   border-radius: 1rem;
   overflow: hidden;
   height: 5rem;
-  width: 23rem;
+  width: 15rem;
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   background-size: cover;
@@ -357,31 +365,6 @@ header {
   display: none;
 }
 
-/* CSS for the Minigames category card */
-.minigames-card {
-  background-image: url('/assets/user.png');  /* Path to your image */
-  position: relative;
-  padding: 1rem;
-  border-radius: 1rem;
-  overflow: hidden;
-  height: 5rem;
-  width: 23rem;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  font-size: 10rem;
-  margin-top: 0rem;
-}
-
-.minigames-card .category-label {
-  font-size: 1.2rem;  /* Adjust font size for the label */
-  text-transform: uppercase;
-}
 
 
 @media (max-width: 1200px) and (min-width: 901px) {

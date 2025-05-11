@@ -18,6 +18,10 @@ let usedQuestions = [];
 let questions = [];
 let currentQuestionIndex = 0;
 
+const bgMusic = new Audio("/game/rockpaper/assets/bcg3-lofi.mp3");
+bgMusic.loop = true;
+bgMusic.volume = 0.3; 
+
 function retrieveQuestion() {
   const selected = JSON.parse(localStorage.getItem("userSelected"));
   const currentCategory = selected?.currentCategory;

@@ -12,12 +12,12 @@
       type="image/png"
     />
 </head>
-<body>
+<body>  
     <div class="wrapper" id="loginWrapper" >
-      <div class="login-card">
+      <form class="login-card" action="index.php">
         <img src="../assets/mascot.png" alt="Mascot" class="mascot" />
         <h1>Welcome to LearnPlay</h1>
-        <input type="text" placeholder="Username" class="input" required/>
+        <input type="text" placeholder="Username" class="input" required id="login-username"/>
         <input type="password" placeholder="Password" class="input" id="login-password" required/>
         <label id="remember-btn"><input type="checkbox" id="remember-me"> Remember Me</label>
         <button class="sign-btn" id="signIn-btn">Sign In</button>
@@ -29,7 +29,7 @@
         <div class="create-account">
           <p>Don't have an account? <a href="#" id="showRegisterLink">Create Account</a></p>
         </div>
-      </div>
+      </form>
     </div>
     <script src="lindex.js"></script>
     <script src="/assets/disableForward.js"></script>

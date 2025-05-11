@@ -1,0 +1,200 @@
+-- Combined Insert Data for all Questions across Subjects
+
+INSERT INTO tblQuestions (category_id, question, correct_answer) VALUES
+-- Math (category_id 1-4)
+-- Addition (1)
+(1, 'What is 3 + 7?', '10'),
+(1, 'What is 12 + 5?', '17'),
+(1, 'What is 0 + 14?', '14'),
+(1, 'What is 20 + 1?', '21'),
+(1, 'What is 9 + 9?', '18'),
+(1, 'What is 15 + 4?', '19'),
+(1, 'What is 6 + 6?', '12'),
+(1, 'What is 2 + 11?', '13'),
+(1, 'What is 8 + 10?', '18'),
+(1, 'What is 17 + 3?', '20'),
+
+-- Subtraction (2)
+(2, 'What is 10 - 4?', '6'),
+(2, 'What is 18 - 9?', '9'),
+(2, 'What is 20 - 5?', '15'),
+(2, 'What is 15 - 7?', '8'),
+(2, 'What is 13 - 6?', '7'),
+(2, 'What is 19 - 12?', '7'),
+(2, 'What is 17 - 10?', '7'),
+(2, 'What is 14 - 8?', '6'),
+(2, 'What is 9 - 9?', '0'),
+(2, 'What is 11 - 4?', '7'),
+
+-- Multiplication (3)
+(3, 'What is 3 x 4?', '12'),
+(3, 'What is 7 x 6?', '42'),
+(3, 'What is 9 x 5?', '45'),
+(3, 'What is 8 x 8?', '64'),
+(3, 'What is 4 x 11?', '44'),
+(3, 'What is 6 x 7?', '42'),
+(3, 'What is 2 x 10?', '20'),
+(3, 'What is 5 x 3?', '15'),
+(3, 'What is 11 x 11?', '121'),
+(3, 'What is 10 x 9?', '90'),
+
+-- Division (4)
+(4, 'What is 12 ÷ 4?', '3'),
+(4, 'What is 18 ÷ 6?', '3'),
+(4, 'What is 20 ÷ 5?', '4'),
+(4, 'What is 45 ÷ 9?', '5'),
+(4, 'What is 36 ÷ 6?', '6'),
+(4, 'What is 64 ÷ 8?', '8'),
+(4, 'What is 100 ÷ 10?', '10'),
+(4, 'What is 49 ÷ 7?', '7'),
+(4, 'What is 81 ÷ 9?', '9'),
+(4, 'What is 30 ÷ 5?', '6'),
+
+
+-- Science (category_id 5-8)
+-- Experiments (5)
+(5, 'What tool do you use to measure temperature?', 'Thermometer'),
+(5, 'What do plants need to grow?', 'Sunlight'),
+(5, 'What is the process by which plants make their own food?', 'Photosynthesis'),
+(5, 'What is the force that pulls objects towards the Earth?', 'Gravity'),
+(5, 'What is the smallest unit of matter?', 'Atom'),
+(5, 'What is the chemical symbol for water?', 'H2O'),
+(5, 'What type of energy is stored in food?', 'Chemical Energy'),
+(5, 'What is the name of the process where water changes from a liquid to a gas?', 'Evaporation'),
+(5, 'What is the name of the process where water changes from a gas to a liquid?', 'Condensation'),
+(5, 'What is the name of the process where a solid changes directly to a gas?', 'Sublimation'),
+
+-- Astronomy (6)
+(6, 'Which planet is known as the Red Planet?', 'Mars'),
+(6, 'What is the name of our galaxy?', 'Milky Way'),
+(6, 'What is the largest planet in our solar system?', 'Jupiter'),
+(6, 'What is a celestial body that orbits a planet?', 'Moon'),
+(6, 'What is the name of the star at the center of our solar system?', 'Sun'),
+(6, 'What are shooting stars?', 'Meteors'),
+(6, 'What is a group of stars that form a pattern?', 'Constellation'),
+(6, 'What is the name of the force that causes the tides?', 'Gravity'),
+(6, 'What is a large cloud of gas and dust in space?', 'Nebula'),
+(6, 'What is the name of the dwarf planet known for its unusual orbit?', 'Pluto'),
+
+-- Biology (7)
+(7, 'What part of the body pumps blood?', 'Heart'),
+(7, 'What is the basic unit of life?', 'Cell'),
+(7, 'What process do plants use to convert sunlight into energy?', 'Photosynthesis'),
+(7, 'What is the green pigment in plants that captures sunlight?', 'Chlorophyll'),
+(7, 'What is the largest organ in the human body?', 'Skin'),
+(7, 'What is the process by which organisms produce offspring?', 'Reproduction'),
+(7, 'What is the process of breaking down food into smaller molecules?', 'Digestion'),
+(7, 'What is the name for the genetic material in cells?', 'DNA'),
+(7, 'What is the process by which organisms maintain a stable internal environment?', 'Homeostasis'),
+(7, 'What is the study of living things?', 'Biology'),
+
+-- Geography (8)
+(8, 'What is the largest ocean?', 'Pacific Ocean'),
+(8, 'What is the highest mountain in the world?', 'Mount Everest'),
+(8, 'What is the longest river in the world?', 'Amazon River'),
+(8, 'What is the largest desert in the world?', 'Antarctica'),
+(8, "What is the name of Earth's only natural satellite?", 'Moon'),
+(8, 'What is the name of the largest continent?', 'Asia'),
+(8, "What is the name of the Earth's layer that contains the continents and ocean basins?", 'Crust'),
+(8, "What is the process of wearing away the Earth's surface by natural forces?", 'Erosion'),
+(8, 'What is a large body of salt water surrounded by land?', 'Sea'),
+(8, "What is the study of the Earth's physical features?", 'Geography'),
+
+
+-- Vocabulary (category_id 9-12)
+-- Reading (9)
+(9, "What is the opposite of 'hot'?", 'Cold'),
+(9, "What is a synonym for 'happy'?", 'Joyful'),
+(9, "What is an antonym for 'big'?", 'Small'),
+(9, "What is a synonym for 'quick'?", 'Fast'),
+(9, "What is an antonym for 'up'?", 'Down'),
+(9, "What is a synonym for 'beautiful'?", 'Gorgeous'),
+(9, "What is an antonym for 'light'?", 'Heavy'),
+(9, "What is a synonym for 'sad'?", 'Depressed'),
+(9, "What is an antonym for 'start'?", 'End'),
+(9, "What is a synonym for 'angry'?", 'Furious'),
+
+-- Writing (10)
+(10, "What do we use to write?", 'Pencil'),
+(10, "What is a collection of sentences?", 'Paragraph'),
+(10, "What punctuation mark ends a sentence?", 'Period'),
+(10, "What is the name for a story with a beginning, middle, and end?", 'Narrative'),
+(10, "What is a word that describes a noun?", 'Adjective'),
+(10, "What is a word that shows action?", 'Verb'),
+(10, "What is a word that modifies a verb?", 'Adverb'),
+(10, "What is a group of words that contains a subject and a verb?", 'Clause'),
+(10, "What is the process of correcting errors in writing?", 'Editing'),
+(10, "What is a short story with a moral lesson?", 'Fable'),
+
+-- Letters (11)
+(11, "Which is a vowel?", 'A'),
+(11, "Which letter comes after 'G'?", 'H'),
+(11, "Which letter is the first letter of the alphabet?", 'A'),
+(11, "Which letter is a consonant?", 'B'),
+(11, "Which letter is often used to represent a sound?", 'X'),
+(11, "Which letter is found in the word 'cat'?", 'C'),
+(11, "Which letter is a vowel?", 'E'),
+(11, "Which letter comes before 'M'?", 'L'),
+(11, "Which letter is the last letter of the alphabet?", 'Z'),
+(11, "Which letter is a consonant?", 'T'),
+
+-- Numbers (12)
+(12, "What comes after 4?", '5'),
+(12, "What is 2 + 2?", '4'),
+(12, "What is 10 - 5?", '5'),
+(12, "What is half of 10?", '5'),
+(12, "What is 3 x 3?", '9'),
+(12, "What is 12 / 4?", '3'),
+(12, "What is the next even number after 8?", '10'),
+(12, "What is 5 less than 15?", '10'),
+(12, "What is 10 more than 20?", '30'),
+(12, "What is the square root of 16?", '4'),
+
+-- Filipino (category_id 13-16)
+-- History (13)
+(13, 'When did the Philippines become free from Spain?', 'June 12, 1898'),
+(13, 'What group did Andres Bonifacio start to fight for freedom?', 'Katipunan'),
+(13, 'Where was the peace deal called the Pact of Biak-na-Bato signed?', 'Bulacan'),
+(13, 'When did the Spanish come to the Philippines?', '1521'),
+(13, 'What government did Emilio Aguinaldo lead?', 'Revolutionary Government'),
+(13, 'Who was the first Filipino to become governor-general?', 'Rafael Palma'),
+(13, 'What country did the Philippines fight in the Philippine-American War?', 'America'),
+(13, 'Which country controlled the Philippines in World War II?', 'Japan'),
+(13, 'What secret group wanted to free the Philippines from Spain?', 'Katipunan'),
+(13, 'Where did Ferdinand Magellan arrive in 1521?', 'Cebu'),
+
+-- Heroes (14)
+(14, 'Who wrote the book Noli Me Tangere?', 'Jose Rizal'),
+(14, "Who was called the 'Brains of the Revolution'?", 'Apolinario Mabini'),
+(14, 'Who led the Katipunan group?', 'Andres Bonifacio'),
+(14, 'Who was the youngest Filipino general?', 'Gregorio del Pilar'),
+(14, 'Who became the first president of the Philippines?', 'Emilio Aguinaldo'),
+(14, 'Who is the national hero of the Philippines?', 'Jose Rizal'),
+(14, 'Who fought against Magellan in Mactan?', 'Lapu-Lapu'),
+(14, 'Who was the wife of Diego Silang and became a hero too?', 'Gabriela Silang'),
+(14, 'Who helped take care of wounded Filipino soldiers?', 'Melchora Aquino'),
+(14, 'Who helped make the Philippine flag?', 'Marcela Agoncillo'),
+
+-- Presidents (15)
+(15, 'Who was the first President of the Philippines?', 'Emilio Aguinaldo'),
+(15, 'Who was the first President of the Commonwealth?', 'Manuel Quezon'),
+(15, 'Who was the President during Martial Law?', 'Ferdinand Marcos'),
+(15, 'Who was the first female President of the Philippines?', 'Cory Aquino'),
+(15, 'Who became President after Marcos left?', 'Corazon Aquino'),
+(15, 'Who was the President before Bongbong Marcos?', 'Rodrigo Duterte'),
+(15, 'Who was the President during the EDSA People Power in 1986?', 'Ferdinand Marcos'),
+(15, "Who is known as the 'Champion of the Common Man'?", 'Ramon Magsaysay'),
+(15, 'Who made Filipino the national language?', 'Manuel Quezon'),
+(15, 'Who is the current President of the Philippines (2025)?', 'Bongbong Marcos'),
+
+-- Grammar (16)
+(16, 'What is a pangngalan?', 'A name of a person, place, or thing'),
+(16, 'Which one is a pandiwa (verb)?', 'Takbo'),
+(16, 'Which one is a pang-uri (adjective)?', 'Maganda'),
+(16, "What is the plural of 'bata' in Filipino?", 'Mga bata'),
+(16, 'Which sentence is correct?', 'Ako ay masaya.'),
+(16, 'Which one is a panghalip (pronoun)?', 'Ako'),
+(16, 'What is the opposite of "malaki"?', 'Maliit'),
+(16, 'Which word is spelled correctly?', 'Maganda'),
+(16, 'What punctuation mark ends a question?', '?'),
+(16, 'Which one is a complete sentence?', 'Tumakbo ang aso.');

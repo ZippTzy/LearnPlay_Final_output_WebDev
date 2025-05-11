@@ -10,6 +10,10 @@ const categoryContainer = document.querySelector(".categories");
 const btnAbout = document.getElementById("about");
 const btnProfile = document.getElementById("profile");
 
+const bgMusic = new Audio("/assets/sounds/bcg1-lofi.mp3");
+bgMusic.loop = true;
+bgMusic.volume = 0.3; 
+
 const gameSubcategories = [
   {
     name: "Rock Paper Scissors",

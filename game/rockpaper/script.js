@@ -5,7 +5,19 @@ var opponentScore = 0;
 
 var choices = ["rock", "paper", "scissors"];
 
+
+const bgMusic = new Audio("/game/rockpaper/assets/bcg3-lofi.mp3");
+bgMusic.loop = true;
+bgMusic.volume = 0.3;
+
+
+const resultSound = new Audio("/game/rockpaper/assets/game-complete.mp3.mp3");
+
+
 window.onload = function () {
+  bgMusic.play().catch(() => {
+  });
+
   for (let i = 0; i < choices.length; i++) {
     let choice = document.createElement("img");
     choice.id = choices[i];
@@ -15,14 +27,17 @@ window.onload = function () {
   }
 };
 
-const exit = document.getElementById("firstExit"); // Get the first element with the class "exit"
+const exit = document.getElementById("firstExit"); 
 exit.addEventListener("click", function () {
-      window.location.href = "/../../home/homepage.html"; // Redirect to the homepage
+  window.location.href = "/../../home/homepage.html"; 
 });
 
 let roundCount = 0;
 
 function selectChoice() {
+  clickSound.currentTime = 0;
+  clickSound.play();
+
   you = this.id;
   document.getElementById("your-choice").src =
     "/game/rockpaper/assets/" + you + ".png";
@@ -56,6 +71,8 @@ function selectChoice() {
 }
 
 function showGameOver() {
+  resultSound.play();
+
   document.querySelector(".game-area").classList.add("hidden");
   document.getElementById("game-over").classList.remove("hidden");
 
@@ -78,13 +95,10 @@ function showGameOver() {
     document.getElementById("opponent-score").innerText = "Opponent Score: 0";
     document.getElementById("game-over").classList.add("hidden");
     document.querySelector(".game-area").classList.remove("hidden");
-
-
-
   });
-    const exit2 = document.getElementById("secondExit"); // Get the first element with the class "exit"
 
-      exit2.addEventListener("click", function () {
-      window.location.href = "/../../home/homepage.html"; // Redirect to the homepage
-    });
+  const exit2 = document.getElementById("secondExit"); // Get the first element with the class "exit"
+  exit2.addEventListener("click", function () {
+    window.location.href = "/../../home/homepage.html"; // Redirect to the homepage
+  });
 }

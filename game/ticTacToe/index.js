@@ -5,7 +5,12 @@ window.addEventListener("DOMContentLoaded", () => {
   const announcer = document.querySelector(".announcer");
   const exit = document.getElementById("exit");
   const click = document.getElementById("click");
+  const bgMusic = new Audio("/game/rockpaper/assets/bcg3-lofi.mp3");
+  const resultSound = new Audio("/game/rockpaper/assets/game-complete.mp3.mp3");
 
+  bgMusic.loop = true;
+  bgMusic.volume = 0.3;
+  resultSound.volume = 1;
   let board = ["", "", "", "", "", "", "", "", ""];
   let currentPlayer = "X";
   let isGameActive = true;
@@ -54,12 +59,16 @@ window.addEventListener("DOMContentLoaded", () => {
     switch (type) {
       case PLAYERO_WON:
         announcer.innerHTML = 'Player <span class="playerO">O</span> Won';
+        resultSound.play();
         break;
       case PLAYERX_WON:
         announcer.innerHTML = 'Player <span class="playerX">X</span> Won';
+        resultSound.play();
         break;
       case TIE:
         announcer.innerText = "Tie";
+        resultSound.play();
+
     }
     announcer.classList.remove("hide");
   };
@@ -88,7 +97,7 @@ window.addEventListener("DOMContentLoaded", () => {
       if (isGameActive) changePlayer();
 
       if (isGameActive && currentPlayer === "O") {
-        setTimeout(aiMove, 500); // AI makes a move after short delay
+        setTimeout(aiMove, 500);
       }
     }
   };
@@ -97,7 +106,7 @@ window.addEventListener("DOMContentLoaded", () => {
     board = ["", "", "", "", "", "", "", "", ""];
     isGameActive = true;
     announcer.classList.add("hide");
-    click.classList.remove("hide"); // Show the click button again on reset
+    click.classList.remove("hide");
 
     if (currentPlayer === "O") {
       changePlayer();
@@ -116,11 +125,10 @@ window.addEventListener("DOMContentLoaded", () => {
 
   resetButton.addEventListener("click", resetBoard);
 
-  // AI Functions
   function aiMove() {
     let move = findBestMove("O");
     if (move === -1) {
-      move = findBestMove("X"); // block player
+      move = findBestMove("X");
     }
     if (move === -1) {
       const emptyIndices = board
@@ -148,12 +156,10 @@ window.addEventListener("DOMContentLoaded", () => {
     return -1;
   }
 
-  // Exit button logic
   exit.addEventListener("click", function () {
     window.location.href = "../../home/homepage.html";
   });
 
-  // Click button logic (hides when clicked)
   click.addEventListener("click", () => {
     click.classList.add("hidden");
   });

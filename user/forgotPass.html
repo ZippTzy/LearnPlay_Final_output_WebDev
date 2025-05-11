@@ -14,11 +14,13 @@
 </head>
 <body>
     <div class="wrapper" id="loginWrapper" >
-      <div class="login-card">
+      <form class="login-card" action="index.php" >
         <img src="../assets/mascot.png" alt="Mascot" class="mascot" />
         <h1>Recover Password</h1>
-        <input type="text" placeholder="Gmail" class="input" required/>
+        <input type="text" id="forgot-username" placeholder="Username" class="input" required />
         <input type="password" placeholder="Verification Code" class="input" id="login-password" required/>
+        <button class="sign-btn" id="ask-btn">Get Code</button>
+
         <button class="sign-btn" id="signIn-btn">Submit</button>
         
         <div class="social-login">
@@ -28,7 +30,7 @@
         <div class="create-account">
           <p>Don't have an account? <a href="#" id="showRegisterLink">Create Account</a></p>
         </div>
-      </div>
+      </form>
     </div>
     <script src="lindex.js"></script>
     <script src="/assets/disableForward.js"></script>
