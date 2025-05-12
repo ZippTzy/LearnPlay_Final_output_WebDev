@@ -36,18 +36,124 @@ body {
   padding: 2rem;
 }
 
-header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(to right, #75164c, #4e2474);
-  z-index: 10;
-  padding: 1rem;
+  background-color: #4ed5fc;
+  padding: 0.8rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  gap: 20px;
 }
+
+.header img {
+  width: 100px;
+  height: 100px;
+}
+
+.header .info {
+  display: flex;
+  flex-direction: column;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.3rem;
+}
+
+.top-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.username {
+  font-size: 15px;
+  margin: 0;
+}
+
+.nav-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 1rem;
+}
+
+.nav-buttons button {
+  background-color: #d3e0ff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.nav-buttons button:hover {
+  background-color: #b0b7c7;
+}
+
+.background-clip1 {
+  position: relative;
+  right: 0;
+  bottom: 0;
+  width: 80px;
+  height: auto;
+  border-radius: 10px;
+}
+
+.nav-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 1rem;
+}
+
+.nav-buttons button {
+  background-color: #d3e0ff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.nav-buttons button:hover {
+  background-color: #b0b7c7;
+}
+
+.nav-buttons #profile {
+  background-color: #81858f;
+
+}
+
+.quiz-container {
+  max-width: 70%;
+  margin: inherit;
+  background-color: #d6f0f6;
+  border-radius: 50px;
+  padding: 1rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  margin-top: 50px;
+  max-height: inherit;
+  padding: 0;
+
+}
+
+.bcg2 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; 
+  overflow: hidden;
+  pointer-events: none; 
+}
+
 
 .title {
   display: flex;
@@ -86,15 +192,6 @@ header {
   color: #ca58ff;
 }
 
-.container {
-  min-height: 100vh;
-  height: auto;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding-top: 8rem;
-  width: 100%;
-}
 
 .profile-card {
   width: clamp(428px, 990px, 990px);
@@ -105,6 +202,7 @@ header {
   display: grid;
   grid-template-rows: 220px auto;
   overflow: hidden;
+
 }
 
 .main-profile {

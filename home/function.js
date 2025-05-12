@@ -2,17 +2,12 @@ let currentCategory = "";
 let currentSubcategory = "";
 let isOnlineMode = true;
 
-const choicesEl = document.getElementById("choicesContainer");
 const startButton = document.getElementById("startButton");
 const subcategoryList = document.getElementById("subcategory-list");
 const categoryCards = document.querySelectorAll(".category-card");
 const categoryContainer = document.querySelector(".categories");
 const btnAbout = document.getElementById("about");
 const btnProfile = document.getElementById("profile");
-
-const bgMusic = new Audio("/assets/sounds/bcg1-lofi.mp3");
-bgMusic.loop = true;
-bgMusic.volume = 0.3; 
 
 const gameSubcategories = [
   {
@@ -56,9 +51,6 @@ const subcategories = {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-  const userPreview = document.querySelector(".user-preview");
-  const categoryH1 = document.getElementById("welcome");
-  let selectedCategory = null;
   const logOut = document.getElementById("logOut-btn");
   const modeImg = document.getElementById("modeImg");
   const modeSelector = document.getElementById("mode-selector");
@@ -67,18 +59,12 @@ document.addEventListener("DOMContentLoaded", () => {
   modeDiv.addEventListener("click", () => {
     isOnlineMode = !isOnlineMode;
     modeSelector.textContent = isOnlineMode ? "Online Games" : "Online Course";
-    modeImg.src = isOnlineMode ? "/assets/user.png" : "/assets/cedric.png";
+    modeImg.src = isOnlineMode
+      ? "https://img.icons8.com/color/96/controller.png"
+      : "https://img.icons8.com/color/96/classroom.png";
 
     toggleMinigamesCategory(isOnlineMode);
-
-    subcategoryList.classList.add("hidden");
-    subcategoryList.innerHTML = "";
-    startButton.classList.add("hidden");
-    categoryH1.classList.add("hidden");
-    document.querySelectorAll(".category-card").forEach(c => c.classList.remove("selected", "hidden-category"));
-    document.querySelector(".categories").classList.remove("single-row");
-    selectedCategory = null;
-    currentSubcategory = "";
+    resetSelection();
   });
 
   logOut.addEventListener("click", () => {
@@ -93,27 +79,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const selectedName = card.getAttribute("data-category");
 
     if (card.classList.contains("selected")) {
-      card.classList.remove("selected");
-      document.querySelectorAll(".category-card").forEach(c => c.classList.remove("hidden-category"));
-      subcategoryList.classList.add("hidden");
-      subcategoryList.innerHTML = "";
-      startButton.classList.add("hidden");
-      categoryH1.classList.add("hidden");
-      userPreview.classList.remove("hidden");
-      modeDiv.classList.remove("hidden");
-      currentSubcategory = "";
+      resetSelection();
     } else {
-      document.querySelectorAll(".category-card").forEach(c => {
+      document.querySelectorAll(".category-card").forEach((c) => {
         c.classList.toggle("hidden-category", c !== card);
         c.classList.remove("selected");
       });
       card.classList.add("selected");
-      categoryH1.textContent = isOnlineMode ? `Welcome to ${selectedName} Game!` : `Welcome to ${selectedName} Course!`;
-      categoryH1.classList.remove("hidden");
       currentCategory = selectedName;
       loadSubcategories();
-      userPreview.classList.add("hidden");
-      modeDiv.classList.add("hidden");
     }
   });
 
@@ -125,7 +99,7 @@ function toggleMinigamesCategory(isGameMode) {
   if (isGameMode) {
     if (!existing) {
       const card = document.createElement("div");
-      card.className = "category-card minigames-card";
+      card.className = "category-card";
       card.setAttribute("data-category", "Minigames");
 
       const label = document.createElement("div");
@@ -142,6 +116,16 @@ function toggleMinigamesCategory(isGameMode) {
   }
 }
 
+function resetSelection() {
+  currentSubcategory = "";
+  subcategoryList.classList.add("hidden");
+  subcategoryList.innerHTML = "";
+  startButton.classList.add("hidden");
+  document.querySelectorAll(".category-card").forEach((c) =>
+    c.classList.remove("selected", "hidden-category")
+  );
+}
+
 function loadSubcategories() {
   currentSubcategory = "";
   subcategoryList.innerHTML = "";
@@ -153,7 +137,6 @@ function loadSubcategories() {
     const card = document.createElement("div");
     card.className = "category-card subcategory-btn";
     card.style.backgroundImage = `url('${sub.image}')`;
-    card.style.backgroundColor = "#ddd";
     card.dataset.subcategory = sub.name;
 
     const label = document.createElement("div");
@@ -166,20 +149,24 @@ function loadSubcategories() {
     wrapper.appendChild(label);
 
     card.onclick = () => {
-      document.querySelectorAll(".subcategory-btn").forEach((b) => b.classList.remove("selected"));
+      document.querySelectorAll(".subcategory-btn").forEach((b) =>
+        b.classList.remove("selected")
+      );
       card.classList.add("selected");
       currentSubcategory = sub.name;
 
-      window.userSelected = {
-        currentCategory,
-        currentSubcategory,
-      };
+      window.userSelected = { currentCategory, currentSubcategory };
 
       if (currentCategory === "Minigames") {
-        startButton.classList.remove("hidden");
-        startButton.onclick = () => {
-          window.location.href = sub.link;
-        };
+        const foundGame = gameSubcategories.find(
+          (g) => g.name === currentSubcategory
+        );
+        if (foundGame) {
+          startButton.classList.remove("hidden");
+          startButton.onclick = () => {
+            window.location.href = foundGame.link;
+          };
+        }
         return;
       }
 
@@ -194,6 +181,7 @@ function loadSubcategories() {
         localStorage.setItem("quizQuestions", JSON.stringify(questions));
       } else {
         alert("No questions found for this category.");
+        return;
       }
 
       startButton.classList.remove("hidden");
@@ -214,10 +202,7 @@ function startQuiz() {
   if (currentCategory && currentSubcategory) {
     localStorage.setItem(
       "userSelected",
-      JSON.stringify({
-        currentCategory,
-        currentSubcategory,
-      })
+      JSON.stringify({ currentCategory, currentSubcategory })
     );
     window.location.href = "/game/game.html";
   } else {
@@ -225,12 +210,10 @@ function startQuiz() {
   }
 }
 
-startButton.addEventListener("click", startQuiz);
-
-btnAbout.addEventListener("click", function () {
+btnAbout.addEventListener("click", () => {
   window.location.href = "/about/about.html";
 });
 
-btnProfile.addEventListener("click", function () {
+btnProfile.addEventListener("click", () => {
   window.location.href = "/profile/profile.html";
 });
