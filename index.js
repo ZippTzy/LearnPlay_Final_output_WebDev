@@ -1,10 +1,19 @@
-const goLoginButton = document.getElementById("login");
-const goRegisterButton = document.getElementById("register");
+const hamburger = document.querySelector(".hamburger");
+const navMenu = document.querySelector(".nav-menu");
 
-goLoginButton.addEventListener("click", () => {
-  window.location.href = "../user/login.html"; 
-});
+hamburger.addEventListener("click", mobileMenu);
 
-goRegisterButton.addEventListener("click", () => {
-  window.location.href = "../user/register.html"; 
-});
+function mobileMenu() {
+    hamburger.classList.toggle("active");
+    navMenu.classList.toggle("active");
+}
+
+
+const navLink = document.querySelectorAll(".active1");
+
+navLink.forEach(n => n.addEventListener("click", closeMenu));
+
+function closeMenu() {
+    hamburger.classList.remove("active");
+    navMenu.classList.remove("active");
+}
