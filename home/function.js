@@ -12,12 +12,12 @@ const btnProfile = document.getElementById("profile");
 const gameSubcategories = [
   {
     name: "Rock Paper Scissors",
-    image: "/assets/biology.png",
+    image: "/game/rockpaper/assets/rock.png",
     link: "/game/rockpaper/index.html",
   },
   {
     name: "Tic Tac Toe",
-    image: "/assets/add.png",
+    image: "/assets/tic.png",
     link: "/game/ticTacToe/index.html",
   },
 ];
@@ -50,6 +50,13 @@ const subcategories = {
   Minigames: gameSubcategories,
 };
 
+const courseLinks = {
+  Math: "/course/math.html",
+  Science: "/course/science.html",
+  Vocabulary: "/course/vocabulary.html",
+  Filipino: "/course/filipino.html",
+};
+
 document.addEventListener("DOMContentLoaded", () => {
   const logOut = document.getElementById("logOut-btn");
   const modeImg = document.getElementById("modeImg");
@@ -73,22 +80,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
   categoryContainer.addEventListener("click", (e) => {
     const card = e.target.closest(".category-card");
-
     if (!card || card.classList.contains("subcategory-btn")) return;
 
     const selectedName = card.getAttribute("data-category");
 
     if (card.classList.contains("selected")) {
       resetSelection();
-    } else {
-      document.querySelectorAll(".category-card").forEach((c) => {
-        c.classList.toggle("hidden-category", c !== card);
-        c.classList.remove("selected");
-      });
-      card.classList.add("selected");
-      currentCategory = selectedName;
-      loadSubcategories();
+      return;
     }
+
+    document.querySelectorAll(".category-card").forEach((c) => {
+      c.classList.toggle("hidden-category", c !== card);
+      c.classList.remove("selected");
+    });
+    card.classList.add("selected");
+    currentCategory = selectedName;
+
+    // ONLINE COURSE MODE
+    if (!isOnlineMode) {
+      const courseLink = courseLinks[selectedName];
+      if (courseLink) {
+        startButton.textContent = "Start Learning";
+        startButton.classList.remove("hidden");
+        startButton.onclick = () => {
+          window.location.href = courseLink;
+        };
+      } else {
+        alert("No course available for this category.");
+        startButton.classList.add("hidden");
+      }
+      return;
+    }
+
+    // ONLINE GAME MODE
+    loadSubcategories();
   });
 
   toggleMinigamesCategory(isOnlineMode);
@@ -121,12 +146,17 @@ function resetSelection() {
   subcategoryList.classList.add("hidden");
   subcategoryList.innerHTML = "";
   startButton.classList.add("hidden");
+  startButton.textContent = isOnlineMode ? "Start Quiz" : "Start Learning";
+  startButton.onclick = null;
+
   document.querySelectorAll(".category-card").forEach((c) =>
     c.classList.remove("selected", "hidden-category")
   );
 }
 
 function loadSubcategories() {
+  if (!isOnlineMode) return;
+
   currentSubcategory = "";
   subcategoryList.innerHTML = "";
   startButton.classList.add("hidden");
@@ -162,6 +192,7 @@ function loadSubcategories() {
           (g) => g.name === currentSubcategory
         );
         if (foundGame) {
+          startButton.textContent = "Play Game";
           startButton.classList.remove("hidden");
           startButton.onclick = () => {
             window.location.href = foundGame.link;
@@ -184,6 +215,7 @@ function loadSubcategories() {
         return;
       }
 
+      startButton.textContent = "Start Quiz";
       startButton.classList.remove("hidden");
       startButton.onclick = startQuiz;
     };
