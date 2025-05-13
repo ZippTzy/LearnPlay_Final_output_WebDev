@@ -3,10 +3,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const goRegisterButton = document.getElementById("goRegister");
   const showRegisterLink = document.getElementById("showRegisterLink");
   const showLoginLink = document.getElementById("showLoginLink");
-  const signUp = document.getElementById("signUp-btn");
-  const signIn = document.getElementById("signIn-btn");
   const forgotBtn = document.getElementById("forgot");
-  const askBtn = document.getElementById("ask-btn");
+  const registerBtn = document.getElementById("registerButton");
+  const loginBtn = document.getElementById("loginButton");
 
   // Navigation
   goLoginButton?.addEventListener("click", () => {
@@ -31,21 +30,19 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href = "login.html";
   });
 
-  // Sign Up
-  signUp?.addEventListener("click", async (e) => {
-    e.preventDefault();
-
-    const username = document.getElementById("register-username")?.value.trim();
-    const email = document.getElementById("register-email")?.value.trim();
-    const password = document.getElementById("register-password")?.value;
+  // Register
+  registerBtn?.addEventListener("click", async () => {
+    const username = document.getElementById("register-username").value.trim();
+    const email = document.getElementById("register-email").value.trim();
+    const password = document.getElementById("register-password").value;
 
     if (!username || !email || !password) {
-      alert("Please fill in all fields.");
+      alert("All fields are required.");
       return;
     }
 
     try {
-      const response = await fetch("index.php", {
+      const res = await fetch("index.php", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams({
@@ -56,33 +53,34 @@ document.addEventListener("DOMContentLoaded", () => {
         }),
       });
 
-      const result = await response.json();
-
-      if (result.status === "success") {
-        window.location.href = "/home/homepage.html";
+      const data = await res.json();
+      if (data.status === "success") {
+        alert("Registration successful!");
+        window.location.href = "login.html";
       } else {
-        alert(result.message || "Registration failed.");
+        alert(data.message || "Registration failed.");
       }
-    } catch (error) {
+    } catch (err) {
       alert("Error connecting to server.");
-      console.error(error);
+      console.error(err);
     }
   });
 
-  // Sign In
-  signIn?.addEventListener("click", async (e) => {
-    e.preventDefault();
+  // Login
+  let loginAttempts = 0;
+  const maxLoginAttempts = 3;
 
-    const username = document.getElementById("login-username")?.value.trim();
-    const password = document.getElementById("login-password")?.value;
+  loginBtn?.addEventListener("click", async () => {
+    const username = document.getElementById("login-username").value.trim();
+    const password = document.getElementById("login-password").value;
 
     if (!username || !password) {
-      alert("Please enter both username and password.");
+      alert("Username and password are required.");
       return;
     }
 
     try {
-      const response = await fetch("index.php", {
+      const res = await fetch("index.php", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams({
@@ -92,32 +90,33 @@ document.addEventListener("DOMContentLoaded", () => {
         }),
       });
 
-      const result = await response.json();
-
-      if (result.status === "success") {
-        window.location.href = "/home/homepage.html";
+      const data = await res.json();
+      if (data.status === "success") {
+        alert("Login successful!");
+        loginAttempts = 0;
+        window.location.href = "home.html"; // redirect to your dashboard/home
       } else {
-        alert(result.message || "Login failed.");
+        loginAttempts++;
+        alert(data.message || "Login failed.");
+
+        if (loginAttempts >= maxLoginAttempts) {
+          loginBtn.disabled = true;
+          alert("Maximum login attempts reached. Try again later.");
+        }
       }
-    } catch (error) {
+    } catch (err) {
       alert("Error connecting to server.");
-      console.error(error);
+      console.error(err);
     }
   });
 
-  // Forgot Password
-  askBtn?.addEventListener("click", async (e) => {
-    e.preventDefault();
-
-    const username = document.getElementById("forgot-username")?.value.trim();
-
-    if (!username) {
-      alert("Please enter your username.");
-      return;
-    }
+  // Forgot Password (example use, adjust depending on UI)
+  forgotBtn?.addEventListener("click", async () => {
+    const username = prompt("Enter your username to recover password:");
+    if (!username) return;
 
     try {
-      const response = await fetch("index.php", {
+      const res = await fetch("index.php", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams({
@@ -126,23 +125,15 @@ document.addEventListener("DOMContentLoaded", () => {
         }),
       });
 
-      const result = await response.json();
-
-      if (result.status === "success") {
-        const code = Math.floor(100000 + Math.random() * 900000).toString();
-        const userInput = prompt(`Verification Code: ${code}\n\nEnter the code:`);
-
-        if (userInput === code) {
-          alert("Password: " + result.password);
-        } else {
-          alert("Incorrect code.");
-        }
+      const data = await res.json();
+      if (data.status === "success") {
+        alert("Password hash (for testing purposes): " + data.password);
       } else {
-        alert(result.message || "Username not found.");
+        alert(data.message || "User not found.");
       }
-    } catch (error) {
+    } catch (err) {
       alert("Server error.");
-      console.error(error);
+      console.error(err);
     }
   });
 });

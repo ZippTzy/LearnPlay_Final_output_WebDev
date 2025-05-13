@@ -96,7 +96,6 @@ document.addEventListener("DOMContentLoaded", () => {
     card.classList.add("selected");
     currentCategory = selectedName;
 
-    // ONLINE COURSE MODE
     if (!isOnlineMode) {
       const courseLink = courseLinks[selectedName];
       if (courseLink) {
@@ -111,8 +110,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       return;
     }
-
-    // ONLINE GAME MODE
     loadSubcategories();
   });
 
